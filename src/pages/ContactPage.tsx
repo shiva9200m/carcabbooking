@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 
 const FadeInWhenVisible = ({
   children,

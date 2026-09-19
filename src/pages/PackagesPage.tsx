@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Star, Check, Clock, Users } from "lucide-react";
 import { packages } from "@/data/travelData";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 
 const FadeInWhenVisible = ({
   children,

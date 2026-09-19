@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { HomePage } from './components/HomePage';
-import { DestinationsPage } from './components/DestinationsPage';
-import { PackagesPage } from './components/PackagesPage';
-import { ContactPage } from './components/ContactPage';
-import { GuidesPage } from './components/GuidesPage';
-import { NotFoundPage } from './components/NotFoundPage';
-import { Seo } from './components/Seo';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { HomePage } from '@/pages/HomePage';
+import { DestinationsPage } from '@/pages/DestinationsPage';
+import { PackagesPage } from '@/pages/PackagesPage';
+import { ContactPage } from '@/pages/ContactPage';
+import { GuidesPage } from '@/pages/GuidesPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { Seo } from '@/seo/Seo';
 
 export default function App() {
   return (

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 
 export function NotFoundPage() {
   return (

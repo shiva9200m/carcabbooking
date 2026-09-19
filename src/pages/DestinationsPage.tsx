@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Search, SlidersHorizontal, MapPin } from 'lucide-react';
 import { destinations } from '@/data/travelData';
-import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { ImageWithFallback } from '@/components/common/ImageWithFallback';
 
 const FadeInWhenVisible = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -24,7 +24,7 @@ export function DestinationsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('all');
   const [selectedBudget, setSelectedBudget] = useState('all');
-  const [selectedDuration, setSelectedDuration] = useState('all');
+  
   const [showFilters, setShowFilters] = useState(false);
 
   const countries = ['all', ...Array.from(new Set(destinations.map(d => d.country)))];
