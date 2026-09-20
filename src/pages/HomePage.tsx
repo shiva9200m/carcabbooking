@@ -1,4 +1,3 @@
-//src\pages\HomePage.tsx
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Link } from "react-router-dom";
@@ -9,12 +8,22 @@ import {
   Clock,
   DollarSign,
   Star,
+  MapPin,
+  Plane,
+  Train,
+  Car,
 } from "lucide-react";
+
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { destinations, testimonials } from "@/data/travelData";
+import {
+  destinations,
+  testimonials,
+} from "@/data/travelData";
+
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 
 const FadeInWhenVisible = ({
@@ -34,11 +43,20 @@ const FadeInWhenVisible = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{
+        opacity: 0,
+        y: 50,
+      }}
       animate={
         isInView
-          ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 50 }
+          ? {
+              opacity: 1,
+              y: 0,
+            }
+          : {
+              opacity: 0,
+              y: 50,
+            }
       }
       transition={{
         duration: 0.6,
@@ -56,48 +74,116 @@ export function HomePage() {
       icon: Globe,
       title: "Gorakhpur Route Coverage",
       description:
-        "Local, airport, railway station and outstation cab service from Gorakhpur.",
+        "Local taxi, airport pickup, railway station pickup and outstation cab service from Gorakhpur.",
     },
     {
       icon: Shield,
-      title: "Safe Cab Booking",
+      title: "Reliable Cab Booking",
       description:
-        "Clean vehicles and reliable drivers for local, family and outstation travel.",
+        "Clean vehicles and convenient booking for local, family and outstation travel.",
     },
     {
       icon: Clock,
       title: "24/7 Cab Support",
       description:
-        "Cab booking support is available day and night for planned and urgent travel.",
+        "Cab booking support available day and night for planned and urgent journeys.",
     },
     {
       icon: DollarSign,
       title: "Clear Taxi Pricing",
       description:
-        "Easy pricing options for local rides, one-way journeys and round trips.",
+        "Easy booking options for local rides, one-way travel and round trips.",
     },
+  ];
+
+  const localServices = [
+    {
+      icon: Car,
+      title: "Local Taxi in Gorakhpur",
+      description:
+        "Book a local cab in Gorakhpur for city travel, shopping, family visits and everyday transportation.",
+    },
+    {
+      icon: Plane,
+      title: "Gorakhpur Airport Taxi",
+      description:
+        "Book airport pickup and drop service for Gorakhpur Airport with convenient cab booking.",
+    },
+    {
+      icon: Train,
+      title: "Gorakhpur Railway Station Taxi",
+      description:
+        "Book pickup or drop at Gorakhpur Railway Station for local and onward journeys.",
+    },
+    {
+      icon: MapPin,
+      title: "Gorakhpur Sightseeing Cab",
+      description:
+        "Book local sightseeing cab service for popular places across Gorakhpur.",
+    },
+  ];
+
+  const localAreas = [
+    "Gorakhnath Temple",
+    "Ramgarh Tal",
+    "Nauka Vihar",
+    "Gita Press",
+    "Medical College Gorakhpur",
+    "Mohaddipur",
+    "Golghar",
+    "Taramandal",
+    "Rapti Nagar",
+    "Sahjanwa",
+    "Pipraich",
+    "Chauri Chaura",
+  ];
+
+  const popularRoutes = [
+    "Gorakhpur to Ayodhya Cab",
+    "Gorakhpur to Varanasi Cab",
+    "Gorakhpur to Kushinagar Cab",
+    "Gorakhpur to Lucknow Cab",
+    "Gorakhpur to Sonauli Cab",
+    "Gorakhpur to Nepal Cab",
+    "Gorakhpur to Pokhara Cab",
   ];
 
   const faqs = [
     {
-      question: "Do you provide cab booking in Gorakhpur 24/7?",
+      question:
+        "Do you provide cab booking in Gorakhpur 24/7?",
       answer:
-        "Yes. Car Cab Booking provides 24/7 taxi and cab booking support in Gorakhpur for local rides, airport pickup, railway station pickup and outstation travel.",
+        "Yes. Car Cab Booking provides 24/7 booking support for local taxi service, airport pickup, railway station pickup and outstation cab journeys from Gorakhpur.",
     },
     {
-      question: "Can I book an outstation cab from Gorakhpur?",
+      question:
+        "Can I book a local taxi in Gorakhpur?",
       answer:
-        "Yes. Outstation cab service is available from Gorakhpur for destinations such as Ayodhya, Varanasi, Kushinagar, Lucknow, Nepal, Pokhara and other routes.",
+        "Yes. Local taxi booking is available for city travel and areas such as Mohaddipur, Golghar, Taramandal, Rapti Nagar, Gorakhnath and nearby locations.",
     },
     {
-      question: "Do you provide Gorakhpur airport and railway station pickup?",
+      question:
+        "Do you provide Gorakhpur Airport taxi service?",
       answer:
-        "Yes. You can book pickup and drop service for Gorakhpur Airport and Gorakhpur Railway Station for local and onward travel.",
+        "Yes. You can book cab pickup and drop service for Gorakhpur Airport for local and onward travel.",
     },
     {
-      question: "Which vehicles are available for cab booking?",
+      question:
+        "Can I book a taxi from Gorakhpur Railway Station?",
       answer:
-        "Vehicle options may include sedan, SUV, Innova, Ertiga, Scorpio and traveller options depending on your trip and availability.",
+        "Yes. Pickup and drop service is available for Gorakhpur Railway Station for city travel and outstation journeys.",
+    },
+    {
+      question:
+        "Which outstation routes are available from Gorakhpur?",
+      answer:
+        "Popular routes include Gorakhpur to Ayodhya, Varanasi, Kushinagar, Lucknow, Sonauli, Nepal and Pokhara.",
+    },
+    {
+      question:
+        "Do you provide one-way and round-trip cab booking?",
+      answer:
+        "Yes. You can contact us for one-way cab and round-trip booking based on your route and travel requirements.",
     },
   ];
 
@@ -114,14 +200,12 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* =====================================================
-          HERO
-      ====================================================== */}
+      {/* HERO */}
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1694786001018-b43efc0a7983?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMGJlYWNoJTIwdmFjYXRpb258ZW58MXx8fHwxNzY4MzYwMTA1fDA&ixlib=rb-4.1.0&q=80&w=900"
+            src="https://images.unsplash.com/photo-1694786001018-b43efc0a7983?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixlib=rb-4.1.0&q=80&w=1200"
             alt="Cab booking and taxi service in Gorakhpur"
             className="w-full h-full object-cover"
           />
@@ -131,58 +215,71 @@ export function HomePage() {
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
             className="text-4xl md:text-6xl font-bold mb-5 leading-tight"
           >
             Cab Booking & Taxi Service in Gorakhpur
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
             transition={{
               duration: 0.8,
               delay: 0.2,
             }}
             className="text-lg md:text-2xl mb-4 max-w-3xl mx-auto text-white/90"
           >
-            Reliable local and outstation cab service with
-            airport pickup, railway station pickup and 24/7
-            booking support.
+            Local taxi, Gorakhpur Airport pickup,
+            railway station taxi and outstation cab
+            booking with 24/7 support.
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
             transition={{
               duration: 0.8,
               delay: 0.3,
             }}
-            className="text-base md:text-lg mt-2 text-white/90 max-w-3xl mx-auto"
+            className="text-base md:text-lg mt-2 text-white/90 max-w-4xl mx-auto"
           >
-            Travel from Gorakhpur to Ayodhya, Varanasi,
-            Kushinagar, Lucknow, Nepal, Pokhara and other
-            destinations.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.4,
-            }}
-            className="text-sm md:text-base mt-2 text-white/80 max-w-3xl mx-auto"
-          >
-            One-way and round-trip booking • Clean vehicles •
-            Local sightseeing • Family and outstation travel
+            Book Gorakhpur to Ayodhya, Varanasi,
+            Kushinagar, Lucknow, Sonauli, Nepal,
+            Pokhara and other outstation cab routes.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
             transition={{
               duration: 0.8,
               delay: 0.5,
@@ -191,8 +288,12 @@ export function HomePage() {
           >
             <Link to="/packages">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 className="px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-full text-lg font-semibold hover:shadow-2xl transition-shadow flex items-center gap-2 mx-auto sm:mx-0"
               >
                 View Cab Packages
@@ -201,45 +302,24 @@ export function HomePage() {
               </motion.button>
             </Link>
 
-            <Link to="/destinations">
+            <Link to="/contact">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-semibold border-2 border-white hover:bg-white/20 transition-all"
               >
-                Explore Destinations
+                Book a Cab
               </motion.button>
             </Link>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: 1,
-            duration: 1,
-          }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 1.5,
-            }}
-            className="w-6 h-10 border-2 border-white rounded-full flex justify-center"
-          >
-            <motion.div className="w-1 h-3 bg-white rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* =====================================================
-          LOCAL CAB INTRODUCTION
-      ====================================================== */}
+      {/* LOCAL SERVICE INTRO */}
 
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
@@ -250,18 +330,17 @@ export function HomePage() {
               </h2>
 
               <p className="text-slate-600 mt-5 leading-relaxed">
-                Car Cab Booking provides taxi service in
-                Gorakhpur for local city rides, sightseeing,
-                airport transfers, railway station pickup and
-                outstation journeys. Choose the trip type that
-                suits your travel plan and contact us for
-                booking assistance.
+                Car Cab Booking provides local taxi
+                service in Gorakhpur for city rides,
+                airport transfers, railway station
+                pickup, sightseeing and outstation
+                travel.
               </p>
 
               <p className="text-slate-600 mt-5 leading-relaxed">
-                Popular travel options include Gorakhpur to
-                Ayodhya, Varanasi, Kushinagar, Lucknow, Nepal
-                and Pokhara, along with nearby local routes.
+                If you are looking for a taxi near you
+                in Gorakhpur, contact us for local,
+                one-way and round-trip cab booking.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -284,52 +363,136 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* =====================================================
-          TRAVEL GUIDE
-      ====================================================== */}
+      {/* LOCAL SERVICES */}
 
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <FadeInWhenVisible>
-            <div className="max-w-4xl mx-auto text-center rounded-3xl bg-white p-10 shadow-lg">
+            <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Gorakhpur Taxi & Travel Guide
+                Taxi Services in Gorakhpur
               </h2>
 
-              <p className="text-gray-600 mt-4 leading-relaxed">
-                Explore taxi routes, booking information and
-                local travel guidance for Gorakhpur. Find useful
-                information for local trips, pilgrimage travel,
-                airport journeys and outstation routes.
+              <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+                Book local taxi, airport transfer,
+                railway station pickup and sightseeing
+                cab service in Gorakhpur.
               </p>
+            </div>
+          </FadeInWhenVisible>
 
-              <Link
-                to="/guides"
-                className="inline-flex items-center justify-center mt-8 rounded-full bg-sky-600 px-8 py-4 text-white font-semibold hover:bg-sky-700 transition"
-              >
-                Read Travel Guide
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {localServices.map(
+              (service, index) => (
+                <FadeInWhenVisible
+                  key={service.title}
+                  delay={index * 0.1}
+                >
+                  <div className="rounded-2xl bg-slate-50 p-6 text-center shadow-sm ring-1 ring-slate-200 h-full">
+                    <service.icon className="w-10 h-10 mx-auto text-sky-600 mb-4" />
+
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {service.title}
+                    </h3>
+
+                    <p className="mt-3 text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </FadeInWhenVisible>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* LOCAL AREAS */}
+
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <FadeInWhenVisible>
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Local Taxi Coverage in Gorakhpur
+                </h2>
+
+                <p className="mt-4 text-gray-600">
+                  Cab booking is available for popular
+                  local areas and sightseeing locations
+                  across Gorakhpur and nearby places.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-3">
+                {localAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="rounded-full bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-slate-200"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
             </div>
           </FadeInWhenVisible>
         </div>
       </section>
 
-      {/* =====================================================
-          POPULAR DESTINATIONS
-      ====================================================== */}
+      {/* POPULAR ROUTES */}
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <FadeInWhenVisible>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Popular Outstation Cab Routes from Gorakhpur
+              </h2>
+
+              <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+                Book one-way or round-trip cab service
+                from Gorakhpur to popular destinations.
+              </p>
+            </div>
+          </FadeInWhenVisible>
+
+          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {popularRoutes.map(
+              (route, index) => (
+                <FadeInWhenVisible
+                  key={route}
+                  delay={index * 0.05}
+                >
+                  <Link
+                    to="/destinations"
+                    className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-sky-50 hover:border-sky-300 transition"
+                  >
+                    <span className="font-semibold text-gray-800">
+                      {route}
+                    </span>
+
+                    <ArrowRight className="w-5 h-5 text-sky-600" />
+                  </Link>
+                </FadeInWhenVisible>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* EXISTING DESTINATIONS */}
 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <FadeInWhenVisible>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Popular Cab Destinations from Gorakhpur
+                Popular Cab Destinations
               </h2>
 
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Explore popular outstation taxi routes from
-                Gorakhpur for family travel, pilgrimage,
-                holidays and private trips.
+                Explore popular taxi and outstation cab
+                destinations from Gorakhpur.
               </p>
             </div>
           </FadeInWhenVisible>
@@ -337,75 +500,57 @@ export function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {destinations
               .slice(0, 4)
-              .map((destination, index) => (
-                <FadeInWhenVisible
-                  key={destination.id}
-                  delay={index * 0.1}
-                >
-                  <motion.div
-                    whileHover={{
-                      y: -10,
-                    }}
-                    className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              .map(
+                (
+                  destination,
+                  index
+                ) => (
+                  <FadeInWhenVisible
+                    key={
+                      destination.id
+                    }
+                    delay={
+                      index * 0.1
+                    }
                   >
-                    <div className="relative h-64 overflow-hidden">
-                      <ImageWithFallback
-                        src={destination.image}
-                        alt={`${destination.name} cab route from Gorakhpur`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
+                    <motion.div
+                      whileHover={{
+                        y: -10,
+                      }}
+                      className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                    >
+                      <div className="relative h-64 overflow-hidden">
+                        <ImageWithFallback
+                          src={
+                            destination.image
+                          }
+                          alt={`${destination.name} cab route from Gorakhpur`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                          {
+                            destination.name
+                          }
+                        </h3>
 
-                      <motion.div
-                        initial={{
-                          opacity: 0,
-                          y: 20,
-                        }}
-                        whileHover={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <Link to="/destinations">
-                          <button className="px-6 py-2 bg-white text-sky-600 rounded-full font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            View Details
-                          </button>
-                        </Link>
-                      </motion.div>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        {destination.name}
-                      </h3>
-
-                      <p className="text-gray-600 text-sm">
-                        {destination.location}
-                      </p>
-                    </div>
-                  </motion.div>
-                </FadeInWhenVisible>
-              ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              to="/destinations"
-              className="inline-flex items-center gap-2 font-semibold text-sky-700 hover:text-sky-800"
-            >
-              View All Destinations
-
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+                        <p className="text-gray-600 text-sm">
+                          {
+                            destination.location
+                          }
+                        </p>
+                      </div>
+                    </motion.div>
+                  </FadeInWhenVisible>
+                )
+              )}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          WHY CHOOSE US
-      ====================================================== */}
+      {/* WHY CHOOSE */}
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -416,162 +561,168 @@ export function HomePage() {
               </h2>
 
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Convenient cab booking for local travel,
-                airport and railway transfers and outstation
-                journeys from Gorakhpur.
+                Convenient taxi booking for local
+                travel, airport transfers, railway
+                station pickup and outstation trips.
               </p>
             </div>
           </FadeInWhenVisible>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <FadeInWhenVisible
-                key={feature.title}
-                delay={index * 0.1}
-              >
-                <motion.div
-                  whileHover={{
-                    y: -5,
-                  }}
-                  className="text-center p-6 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 hover:shadow-lg transition-all"
+            {features.map(
+              (
+                feature,
+                index
+              ) => (
+                <FadeInWhenVisible
+                  key={
+                    feature.title
+                  }
+                  delay={
+                    index * 0.1
+                  }
                 >
                   <motion.div
                     whileHover={{
-                      rotate: 360,
+                      y: -5,
                     }}
-                    transition={{
-                      duration: 0.5,
-                    }}
-                    className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-sky-600 to-blue-600 rounded-full flex items-center justify-center"
+                    className="text-center p-6 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 hover:shadow-lg transition-all"
                   >
-                    <feature.icon className="w-8 h-8 text-white" />
+                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-sky-600 to-blue-600 rounded-full flex items-center justify-center">
+                      <feature.icon className="w-8 h-8 text-white" />
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {
+                        feature.title
+                      }
+                    </h3>
+
+                    <p className="text-gray-600">
+                      {
+                        feature.description
+                      }
+                    </p>
                   </motion.div>
-
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-gray-600">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              </FadeInWhenVisible>
-            ))}
+                </FadeInWhenVisible>
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          FAQ
-      ====================================================== */}
+      {/* FAQ */}
 
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <FadeInWhenVisible>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Frequently Asked Questions
+                Gorakhpur Cab Booking FAQs
               </h2>
-
-              <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-                Quick answers about cab booking and taxi service
-                in Gorakhpur.
-              </p>
             </div>
           </FadeInWhenVisible>
 
           <div className="max-w-4xl mx-auto space-y-5">
-            {faqs.map((faq, index) => (
-              <FadeInWhenVisible
-                key={faq.question}
-                delay={index * 0.05}
-              >
-                <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-                  <h3 className="text-lg md:text-xl font-bold text-slate-900">
-                    {faq.question}
-                  </h3>
+            {faqs.map(
+              (
+                faq,
+                index
+              ) => (
+                <FadeInWhenVisible
+                  key={
+                    faq.question
+                  }
+                  delay={
+                    index * 0.05
+                  }
+                >
+                  <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                    <h3 className="text-lg md:text-xl font-bold text-slate-900">
+                      {
+                        faq.question
+                      }
+                    </h3>
 
-                  <p className="mt-3 text-slate-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              </FadeInWhenVisible>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-sky-600 px-8 py-4 text-white font-semibold hover:bg-sky-700 transition"
-            >
-              Contact Us for Cab Booking
-            </Link>
+                    <p className="mt-3 text-slate-600 leading-relaxed">
+                      {
+                        faq.answer
+                      }
+                    </p>
+                  </div>
+                </FadeInWhenVisible>
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          TESTIMONIALS
-      ====================================================== */}
+      {/* TESTIMONIALS */}
 
       <section className="py-20 bg-gradient-to-br from-sky-600 to-blue-600 text-white">
         <div className="container mx-auto px-4">
-          <FadeInWhenVisible>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">
-                What Our Travelers Say
-              </h2>
-
-              <p className="text-sky-100 max-w-2xl mx-auto">
-                Experiences shared by travelers using our cab
-                services.
-              </p>
-            </div>
-          </FadeInWhenVisible>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              What Our Travelers Say
+            </h2>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <Slider {...sliderSettings}>
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="px-4"
-                >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-                    <div className="flex justify-center mb-4">
-                      {[...Array(testimonial.rating)].map(
-                        (_, i) => (
-                          <Star
-                            key={i}
-                            className="w-6 h-6 fill-yellow-400 text-yellow-400"
-                          />
-                        )
-                      )}
-                    </div>
-
-                    <p className="text-lg mb-6 italic">
-                      "{testimonial.text}"
-                    </p>
-
-                    <div className="flex items-center justify-center gap-4">
-                      <ImageWithFallback
-                        src={testimonial.image}
-                        alt={`${testimonial.name} customer review`}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-
-                      <div className="text-left">
-                        <h3 className="font-bold">
-                          {testimonial.name}
-                        </h3>
-
-                        <p className="text-sky-100 text-sm">
-                          {testimonial.location}
-                        </p>
+              {testimonials.map(
+                (
+                  testimonial
+                ) => (
+                  <div
+                    key={
+                      testimonial.id
+                    }
+                    className="px-4"
+                  >
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
+                      <div className="flex justify-center mb-4">
+                        {[
+                          ...Array(
+                            testimonial.rating
+                          ),
+                        ].map(
+                          (
+                            _,
+                            i
+                          ) => (
+                            <Star
+                              key={
+                                i
+                              }
+                              className="w-6 h-6 fill-yellow-400 text-yellow-400"
+                            />
+                          )
+                        )}
                       </div>
+
+                      <p className="text-lg mb-6 italic">
+                        "
+                        {
+                          testimonial.text
+                        }
+                        "
+                      </p>
+
+                      <h3 className="font-bold">
+                        {
+                          testimonial.name
+                        }
+                      </h3>
+
+                      <p className="text-sky-100 text-sm">
+                        {
+                          testimonial.location
+                        }
+                      </p>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </Slider>
           </div>
         </div>

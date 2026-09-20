@@ -16,37 +16,37 @@ type SeoConfig = {
 const seoByPath: Record<string, SeoConfig> = {
   "/": {
     title:
-      "Cab Booking in Gorakhpur | Taxi Service 24/7 | Car Cab Booking",
+      "Cab Booking in Gorakhpur | Local Taxi & Outstation Cab 24/7",
     description:
-      "Book reliable cab and taxi service in Gorakhpur for local travel, airport and railway pickup, sightseeing and outstation trips including Ayodhya, Varanasi, Kushinagar and Nepal.",
+      "Book cab and taxi service in Gorakhpur for local rides, airport pickup, railway station pickup, sightseeing and outstation trips to Ayodhya, Varanasi, Kushinagar, Lucknow, Nepal and more.",
   },
 
   "/destinations": {
     title:
-      "Outstation Cab from Gorakhpur | Nepal, Ayodhya, Varanasi & More",
+      "Outstation Cab from Gorakhpur | Ayodhya, Varanasi, Nepal & More",
     description:
-      "Book outstation cab from Gorakhpur to Nepal, Pokhara, Ayodhya, Varanasi, Kushinagar, Lucknow, Sonauli and other destinations with reliable taxi service.",
+      "Book outstation cab from Gorakhpur to Ayodhya, Varanasi, Kushinagar, Lucknow, Sonauli, Nepal, Pokhara and nearby destinations with one-way and round-trip options.",
   },
 
   "/packages": {
     title:
       "Cab Packages in Gorakhpur | Sedan, SUV, Innova & Traveller",
     description:
-      "Explore cab booking packages in Gorakhpur with sedan, SUV, Innova, Ertiga, Scorpio and tempo traveller options for local, family and outstation travel.",
+      "Explore cab booking packages in Gorakhpur for local taxi, airport transfer, railway station pickup and outstation travel with sedan, SUV, Innova, Ertiga and traveller options.",
   },
 
   "/guides": {
     title:
-      "Gorakhpur Taxi & Travel Guide | Local and Outstation Cab Tips",
+      "Gorakhpur Taxi Guide | Airport, Railway & Local Cab Travel",
     description:
-      "Read useful Gorakhpur taxi and travel guides for local cab booking, airport pickup, railway station travel, sightseeing and outstation trips.",
+      "Read Gorakhpur taxi and travel guides for airport pickup, railway station taxi, local sightseeing, Gorakhnath Temple, Ramgarh Tal, Nauka Vihar and outstation cab routes.",
   },
 
   "/contact": {
     title:
-      "Contact Car Cab Booking Gorakhpur | Book Taxi 24/7",
+      "Contact Car Cab Booking Gorakhpur | Taxi Booking 24/7",
     description:
-      "Contact Car Cab Booking in Gorakhpur for local taxi, airport pickup, railway station pickup, car rental and outstation cab booking. Call or WhatsApp 24/7.",
+      "Contact Car Cab Booking for local taxi in Gorakhpur, airport pickup, Gorakhpur Railway Station cab, outstation taxi, one-way cab and round-trip booking.",
   },
 };
 
@@ -89,7 +89,7 @@ const breadcrumbByPath: Record<
       item: `${siteUrl}/`,
     },
     {
-      name: "Guides",
+      name: "Travel Guide",
       item: `${siteUrl}/guides`,
     },
   ],
@@ -170,7 +170,6 @@ export function Seo() {
     });
 
     const seo = seoByPath[path];
-
     const isKnownPage = Boolean(seo);
 
     const activeSeo: SeoConfig = isKnownPage
@@ -179,7 +178,7 @@ export function Seo() {
           title:
             "Page Not Found | Car Cab Booking Gorakhpur",
           description:
-            "The page you are looking for could not be found. Visit Car Cab Booking for taxi and cab service in Gorakhpur.",
+            "The requested page could not be found. Visit Car Cab Booking for local taxi and outstation cab service in Gorakhpur.",
           robots: "noindex, follow",
         };
 
@@ -188,19 +187,7 @@ export function Seo() {
         ? `${siteUrl}/`
         : `${siteUrl}${path}`;
 
-    /*
-     * =========================================================
-     * TITLE
-     * =========================================================
-     */
-
     document.title = activeSeo.title;
-
-    /*
-     * =========================================================
-     * META DESCRIPTION
-     * =========================================================
-     */
 
     upsertMeta(
       'meta[name="description"]',
@@ -213,12 +200,6 @@ export function Seo() {
       activeSeo.description
     );
 
-    /*
-     * =========================================================
-     * ROBOTS
-     * =========================================================
-     */
-
     upsertMeta(
       'meta[name="robots"]',
       () => {
@@ -230,12 +211,6 @@ export function Seo() {
       activeSeo.robots ??
         "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     );
-
-    /*
-     * =========================================================
-     * OPEN GRAPH
-     * =========================================================
-     */
 
     upsertMeta(
       'meta[property="og:title"]',
@@ -349,12 +324,6 @@ export function Seo() {
       defaultLocale
     );
 
-    /*
-     * =========================================================
-     * TWITTER / SOCIAL META
-     * =========================================================
-     */
-
     upsertMeta(
       'meta[name="twitter:card"]',
       () => {
@@ -412,12 +381,6 @@ export function Seo() {
       defaultImageAlt
     );
 
-    /*
-     * =========================================================
-     * CANONICAL URL
-     * =========================================================
-     */
-
     let canonical =
       document.head.querySelector<HTMLLinkElement>(
         'link[rel="canonical"]'
@@ -431,12 +394,6 @@ export function Seo() {
     }
 
     canonical.href = canonicalUrl;
-
-    /*
-     * =========================================================
-     * BREADCRUMB SCHEMA
-     * =========================================================
-     */
 
     const breadcrumbList =
       breadcrumbByPath[path];

@@ -8,6 +8,9 @@ import {
   MessageCircle,
   ExternalLink,
   Clock,
+  Car,
+  Plane,
+  Train,
 } from "lucide-react";
 
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
@@ -150,16 +153,41 @@ export function ContactPage() {
     },
   ];
 
+  const services = [
+    {
+      icon: Car,
+      title: "Local Taxi in Gorakhpur",
+      description:
+        "Book local cab service for Mohaddipur, Golghar, Taramandal, Rapti Nagar, Gorakhnath, Medical College and nearby areas.",
+    },
+    {
+      icon: Plane,
+      title: "Gorakhpur Airport Taxi",
+      description:
+        "Book airport pickup and drop service for Gorakhpur Airport with local and onward cab options.",
+    },
+    {
+      icon: Train,
+      title: "Gorakhpur Railway Station Taxi",
+      description:
+        "Book pickup or drop at Gorakhpur Railway Station for local travel or outstation journeys.",
+    },
+    {
+      icon: MapPin,
+      title: "Gorakhpur Sightseeing Cab",
+      description:
+        "Book sightseeing taxi for Gorakhnath Temple, Ramgarh Tal, Nauka Vihar, Gita Press and other local attractions.",
+    },
+  ];
+
   return (
     <div className="min-h-screen pt-20">
-      {/* =====================================================
-          HERO
-      ====================================================== */}
+      {/* HERO */}
 
       <section className="relative h-80 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxpJTIwaW5kb25lc2lhfGVufDF8fHx8MTc2ODMxMjY3Mnww&ixlib=rb-4.1.0&q=80&w=900"
+            src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixlib=rb-4.1.0&q=80&w=900"
             alt="Contact Car Cab Booking for taxi service in Gorakhpur"
             className="w-full h-full object-cover"
           />
@@ -196,16 +224,14 @@ export function ContactPage() {
             }}
             className="text-lg md:text-xl max-w-3xl mx-auto"
           >
-            Call or WhatsApp us 24/7 for local taxi,
-            airport pickup, railway station pickup and
-            outstation cab booking from Gorakhpur.
+            Call or WhatsApp us 24/7 for local taxi in
+            Gorakhpur, airport pickup, railway station taxi,
+            one-way cab and outstation cab booking.
           </motion.p>
         </div>
       </section>
 
-      {/* =====================================================
-          CONTACT INFO
-      ====================================================== */}
+      {/* CONTACT INFO */}
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -265,9 +291,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          QUICK ACTIONS
-      ====================================================== */}
+      {/* QUICK ACTIONS */}
 
       <section className="pb-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -277,7 +301,6 @@ export function ContactPage() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-600 px-7 py-4 text-white font-semibold hover:bg-sky-700 transition"
             >
               <Phone className="w-5 h-5" />
-
               Call Now
             </a>
 
@@ -293,7 +316,6 @@ export function ContactPage() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-green-600 px-7 py-4 text-white font-semibold hover:bg-green-700 transition"
             >
               <MessageCircle className="w-5 h-5" />
-
               WhatsApp Booking
             </a>
 
@@ -304,24 +326,57 @@ export function ContactPage() {
               className="inline-flex items-center justify-center gap-2 rounded-full border border-sky-600 bg-white px-7 py-4 text-sky-700 font-semibold hover:bg-sky-50 transition"
             >
               <MapPin className="w-5 h-5" />
-
               View on Google
-
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          BOOKING FORM + MAP
-      ====================================================== */}
+      {/* LOCAL SERVICES */}
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Taxi & Cab Services in Gorakhpur
+            </h2>
+
+            <p className="mt-4 text-gray-600">
+              Contact us for local taxi service, airport taxi,
+              railway station pickup, sightseeing and
+              outstation cab booking in Gorakhpur.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {services.map((service, index) => (
+              <FadeInWhenVisible
+                key={service.title}
+                delay={index * 0.1}
+              >
+                <div className="rounded-2xl bg-slate-50 p-6 text-center shadow-sm ring-1 ring-slate-200 h-full">
+                  <service.icon className="w-10 h-10 mx-auto text-sky-600 mb-4" />
+
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-3 text-gray-600 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </FadeInWhenVisible>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOKING FORM + MAP */}
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Booking Form */}
-
             <FadeInWhenVisible>
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
@@ -329,9 +384,11 @@ export function ContactPage() {
                 </h2>
 
                 <p className="text-gray-600 mb-8">
-                  Enter your trip details below. On submit,
-                  WhatsApp will open with your booking details so
-                  you can send the request directly.
+                  Enter your trip details below. You can book
+                  local taxi, airport pickup, railway station
+                  taxi, one-way cab or outstation travel.
+                  On submit, WhatsApp will open with your
+                  booking details.
                 </p>
 
                 <form
@@ -412,6 +469,14 @@ export function ContactPage() {
                         Gorakhpur Railway Station
                       </option>
 
+                      <option value="Gorakhnath Temple">
+                        Gorakhnath Temple
+                      </option>
+
+                      <option value="Ramgarh Tal">
+                        Ramgarh Tal / Nauka Vihar
+                      </option>
+
                       <option value="Ayodhya">
                         Ayodhya
                       </option>
@@ -481,25 +546,11 @@ export function ContactPage() {
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
                       >
-                        <option value="1">
-                          1 Passenger
-                        </option>
-
-                        <option value="2">
-                          2 Passengers
-                        </option>
-
-                        <option value="3">
-                          3 Passengers
-                        </option>
-
-                        <option value="4">
-                          4 Passengers
-                        </option>
-
-                        <option value="5+">
-                          5+ Passengers
-                        </option>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5+">5+ Passengers</option>
                       </select>
                     </div>
                   </div>
@@ -534,16 +585,11 @@ export function ContactPage() {
                     className="w-full px-6 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2"
                   >
                     <Send className="w-5 h-5" />
-
                     Continue Booking on WhatsApp
                   </motion.button>
                 </form>
               </div>
             </FadeInWhenVisible>
-
-            {/* =================================================
-                LOCATION / GOOGLE BUSINESS
-            ================================================== */}
 
             <FadeInWhenVisible delay={0.2}>
               <div className="lg:sticky lg:top-32">
@@ -552,9 +598,9 @@ export function ContactPage() {
                 </h2>
 
                 <p className="text-gray-600 mb-6">
-                  Serving Gorakhpur for local taxi,
-                  airport and railway station pickup,
-                  sightseeing and outstation cab travel.
+                  Serving Gorakhpur for local taxi service,
+                  Gorakhpur Airport taxi, railway station pickup,
+                  sightseeing, one-way cab and outstation travel.
                 </p>
 
                 <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden mb-6">
@@ -579,9 +625,7 @@ export function ContactPage() {
                   className="mb-6 inline-flex items-center gap-2 rounded-full bg-sky-600 px-5 py-3 font-semibold text-white transition hover:bg-sky-700"
                 >
                   <MapPin className="h-5 w-5" />
-
                   View Google Business Profile
-
                   <ExternalLink className="h-4 w-4" />
                 </a>
 
@@ -595,9 +639,7 @@ export function ContactPage() {
                   </div>
 
                   <div className="flex justify-between gap-4 text-gray-700">
-                    <span>
-                      Monday - Sunday
-                    </span>
+                    <span>Monday - Sunday</span>
 
                     <span className="font-semibold text-green-700">
                       Open 24 Hours
@@ -605,8 +647,8 @@ export function ContactPage() {
                   </div>
 
                   <p className="mt-4 text-sm text-gray-600">
-                    Call or WhatsApp for booking availability
-                    and pickup confirmation.
+                    Call or WhatsApp for booking availability,
+                    route information and pickup confirmation.
                   </p>
                 </div>
               </div>
@@ -615,56 +657,116 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* =====================================================
-          FAQ
-      ====================================================== */}
+      {/* LOCAL COVERAGE */}
+
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Local Cab Coverage in Gorakhpur
+            </h2>
+
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Local taxi booking is available for Mohaddipur,
+              Golghar, Taramandal, Rapti Nagar, Medical College,
+              Gorakhnath, Sahjanwa, Pipraich, Chauri Chaura and
+              nearby Gorakhpur areas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Cab Booking Questions
+              Gorakhpur Cab Booking Questions
             </h2>
 
             <div className="space-y-6 text-gray-700">
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  Can I book an outstation cab from
-                  Gorakhpur?
+                  Do you provide local taxi in Gorakhpur?
                 </h3>
 
                 <p className="mt-2 leading-relaxed">
-                  Yes. Outstation cab booking is available
-                  from Gorakhpur for Ayodhya, Varanasi,
-                  Kushinagar, Lucknow, Sonauli, Nepal,
-                  Pokhara and other routes.
+                  Yes. Local taxi service is available for city
+                  travel, sightseeing and nearby areas including
+                  Mohaddipur, Golghar, Taramandal, Rapti Nagar
+                  and Gorakhnath.
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  Do you provide airport and railway
-                  station pickup?
+                  Do you provide Gorakhpur Airport taxi?
                 </h3>
 
                 <p className="mt-2 leading-relaxed">
-                  Yes. You can contact Car Cab Booking for
-                  Gorakhpur Airport pickup and drop as well
-                  as Gorakhpur Railway Station pickup and
-                  onward travel.
+                  Yes. You can book Gorakhpur Airport pickup and
+                  drop service for local travel and onward
+                  journeys.
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  How can I confirm my cab booking?
+                  Can I book a cab from Gorakhpur Railway Station?
                 </h3>
 
                 <p className="mt-2 leading-relaxed">
-                  Call us at +91 8810990496 or fill in the
-                  booking form above. The form opens
-                  WhatsApp with your trip details so you
-                  can send the request directly.
+                  Yes. Gorakhpur Railway Station taxi pickup and
+                  drop service is available for city travel and
+                  outstation trips.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Can I book Gorakhpur to Ayodhya cab?
+                </h3>
+
+                <p className="mt-2 leading-relaxed">
+                  Yes. You can contact us for Gorakhpur to
+                  Ayodhya cab booking for one-way or round-trip
+                  travel.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Can I book Gorakhpur to Varanasi taxi?
+                </h3>
+
+                <p className="mt-2 leading-relaxed">
+                  Yes. Outstation taxi booking is available from
+                  Gorakhpur to Varanasi or Banaras based on your
+                  trip requirements.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Which other outstation cab routes are available?
+                </h3>
+
+                <p className="mt-2 leading-relaxed">
+                  Popular routes include Gorakhpur to Kushinagar,
+                  Lucknow, Sonauli, Nepal, Pokhara, Ayodhya and
+                  Varanasi.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Do you provide one-way and round-trip cab booking?
+                </h3>
+
+                <p className="mt-2 leading-relaxed">
+                  Yes. You can request one-way or round-trip cab
+                  booking depending on your route and travel plan.
                 </p>
               </div>
 
@@ -674,9 +776,9 @@ export function ContactPage() {
                 </h3>
 
                 <p className="mt-2 leading-relaxed">
-                  Booking support is available 24/7.
-                  Contact us to confirm vehicle
-                  availability, route and pickup time.
+                  Booking support is available 24/7. Call or
+                  WhatsApp us to confirm vehicle availability,
+                  route and pickup time.
                 </p>
               </div>
             </div>
