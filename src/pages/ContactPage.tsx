@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
+import { trackEvent } from "@/analytics/GA4";
 
 const GOOGLE_BUSINESS_URL =
   "https://share.google/0RjH4DRUBhenK3tYv";
@@ -76,6 +77,15 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // GA4: track booking-form lead.
+    // Do not send name, email, phone, message, or other personal data to GA4.
+    trackEvent("booking_form_submit", {
+      destination: formData.destination || "Not selected",
+      passengers: formData.guests || "Not selected",
+      page_path: window.location.pathname,
+      source: "contact_booking_form",
+    });
 
     const message = [
       "Hi Car Cab Booking,",
