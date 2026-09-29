@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { Star, Check, Clock, Users } from "lucide-react";
+import { Star, Check,  Users } from "lucide-react";
 import { packages } from "@/data/travelData";
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 

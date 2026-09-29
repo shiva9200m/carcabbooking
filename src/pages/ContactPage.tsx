@@ -20,7 +20,7 @@ const GOOGLE_BUSINESS_URL =
   "https://share.google/0RjH4DRUBhenK3tYv";
 
 const PRIMARY_PHONE = "+918810990496";
-const SECONDARY_PHONE = "+917084183421";
+// const SECONDARY_PHONE = "+917084183421";
 const EMAIL = "ajaysingh80098@gmail.com";
 
 const FadeInWhenVisible = ({

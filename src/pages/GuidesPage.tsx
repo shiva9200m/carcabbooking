@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { CheckCircle, MapPin, Clock, Globe } from "lucide-react";
+import { CheckCircle, Clock, Globe } from "lucide-react";
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 
 const guideCards = [
