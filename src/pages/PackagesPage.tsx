@@ -67,8 +67,9 @@ export function PackagesPage() {
               Transparent Cab Booking Packages in Gorakhpur
             </h2>
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Select from sedan, SUV, Innova and traveller packages for local
-              taxi service, airport pickup and outstation travel. Our package
+              Select from sedan, SUV, Innova and traveller packages for car rental
+              in Gorakhpur, local taxi service, airport pickup and outstation travel.
+              Our package
               options are designed to support family trips, business travel and
               group tours with clear charges and no hidden fees.
             </p>

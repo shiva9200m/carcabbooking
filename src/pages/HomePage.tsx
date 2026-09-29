@@ -338,9 +338,9 @@ export function HomePage() {
               </p>
 
               <p className="text-slate-600 mt-5 leading-relaxed">
-                If you are looking for a taxi near you
-                in Gorakhpur, contact us for local,
-                one-way and round-trip cab booking.
+                If you are searching for a travel agency near me, car rental in
+                Gorakhpur, or the best tour and travel in Gorakhpur, contact us
+                for local, one-way, Nepal tour and round-trip cab booking.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">

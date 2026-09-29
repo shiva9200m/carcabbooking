@@ -10,6 +10,7 @@ const defaultImageAlt = "Car Cab Booking Gorakhpur";
 type SeoConfig = {
   title: string;
   description: string;
+  keywords?: string;
   robots?: string;
 };
 
@@ -19,20 +20,26 @@ const seoByPath: Record<string, SeoConfig> = {
       "Cab Booking in Gorakhpur | Local Taxi & Outstation Cab 24/7",
     description:
       "Book cab and taxi service in Gorakhpur for local rides, airport pickup, railway station pickup, sightseeing and outstation trips to Ayodhya, Varanasi, Kushinagar, Lucknow, Nepal and more.",
+    keywords:
+      "Best tour and travel in Gorakhpur, travel agency near me, car rental in Gorakhpur, outstation cab service from Gorakhpur, Gorakhpur to Nepal tour package, Best travel agent in Gorakhpur for Nepal tour",
   },
 
   "/destinations": {
     title:
       "Outstation Cab from Gorakhpur | Ayodhya, Varanasi, Nepal & More",
     description:
-      "Book outstation cab from Gorakhpur to Ayodhya, Varanasi, Kushinagar, Lucknow, Sonauli, Nepal, Pokhara and nearby destinations with one-way and round-trip options.",
+      "Book outstation cab from Gorakhpur to Nepal, Pokhara, Muktinath, Pashupatinath, Ayodhya, Varanasi and more with one-way, round-trip and tour package options.",
+    keywords:
+      "Gorakhpur to Nepal tour package, Best travel agent in Gorakhpur for Nepal tour, Muktinath temple tour from Gorakhpur, Pashupatinath temple tour from Gorakhpur, outstation cab service from Gorakhpur",
   },
 
   "/packages": {
     title:
       "Cab Packages in Gorakhpur | Sedan, SUV, Innova & Traveller",
     description:
-      "Explore cab booking packages in Gorakhpur for local taxi, airport transfer, railway station pickup and outstation travel with sedan, SUV, Innova, Ertiga and traveller options.",
+      "Explore cab booking packages and car rental in Gorakhpur for local taxi, airport transfer, railway station pickup, Nepal tours and outstation travel with sedan, SUV, Innova, Ertiga and traveller options.",
+    keywords:
+      "car rental in Gorakhpur, outstation cab service from Gorakhpur, Best tour and travel in Gorakhpur, Gorakhpur to Nepal tour package",
   },
 
   "/guides": {
@@ -199,6 +206,19 @@ export function Seo() {
       },
       activeSeo.description
     );
+
+    if (activeSeo.keywords) {
+      upsertMeta(
+        'meta[name="keywords"]',
+        () => {
+          const meta =
+            document.createElement("meta");
+          meta.name = "keywords";
+          return meta;
+        },
+        activeSeo.keywords
+      );
+    }
 
     upsertMeta(
       'meta[name="robots"]',

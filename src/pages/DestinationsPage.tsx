@@ -79,16 +79,17 @@ export function DestinationsPage() {
               Outstation Cab Routes from Gorakhpur
             </h2>
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Book safe and comfortable cabs from Gorakhpur to Nepal, Pokhara,
-              Banaras, Ayodhya, Kushinagar, Lucknow and nearby destinations. Our
-              outstation taxi service includes airport transfers, railway station
-              pickups and family tours with experienced drivers and transparent
-              pricing.
+              Book a Gorakhpur to Nepal tour package with comfortable cabs for
+              Pokhara, Pashupatinath Temple, Muktinath Temple and other popular
+              destinations. Our outstation cab service from Gorakhpur also covers
+              Banaras, Ayodhya, Kushinagar, Lucknow and nearby routes with
+              experienced drivers and transparent pricing.
             </p>
             <p className="text-gray-600 mt-4 leading-relaxed">
               Choose one-way or round-trip packages for local travel, pilgrimage
-              journeys and long-distance routes. We provide clean cars, flexible
-              pickup options and 24/7 support for cab booking in Gorakhpur.
+              journeys and long-distance routes. For a Muktinath Temple tour from
+              Gorakhpur or Pashupatinath Temple tour from Gorakhpur, contact our
+              team for route planning, clean cars and 24/7 booking support.
             </p>
           </div>
         </div>
