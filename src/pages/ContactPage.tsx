@@ -20,7 +20,7 @@ const GOOGLE_BUSINESS_URL =
   "https://share.google/0RjH4DRUBhenK3tYv";
 
 const PRIMARY_PHONE = "+918810990496";
-// const SECONDARY_PHONE = "+917084183421";
+const SECONDARY_PHONE = "+917084183421";
 const EMAIL = "ajaysingh80098@gmail.com";
 
 const FadeInWhenVisible = ({
@@ -69,6 +69,7 @@ export function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    pickupLocation: "",
     destination: "",
     date: "",
     guests: "2",
@@ -79,9 +80,9 @@ export function ContactPage() {
     e.preventDefault();
 
     // GA4: track booking-form lead.
-    // Do not send name, email, phone, message, or other personal data to GA4.
+    // Do not send name, email, pickup location,
+    // destination details, message or other personal data to GA4.
     trackEvent("booking_form_submit", {
-      destination: formData.destination || "Not selected",
       passengers: formData.guests || "Not selected",
       page_path: window.location.pathname,
       source: "contact_booking_form",
@@ -94,6 +95,7 @@ export function ContactPage() {
       "",
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
+      `Pickup Location: ${formData.pickupLocation}`,
       `Destination: ${formData.destination}`,
       `Travel Date: ${formData.date}`,
       `Passengers: ${formData.guests}`,
@@ -394,11 +396,11 @@ export function ContactPage() {
                 </h2>
 
                 <p className="text-gray-600 mb-8">
-                  Enter your trip details below. You can book
-                  local taxi, airport pickup, railway station
-                  taxi, one-way cab or outstation travel.
-                  On submit, WhatsApp will open with your
-                  booking details.
+                  Enter your pickup location and destination below.
+                  You can book local taxi, airport pickup, railway
+                  station taxi, one-way cab or outstation travel.
+                  On submit, WhatsApp will open with your booking
+                  details.
                 </p>
 
                 <form
@@ -449,76 +451,42 @@ export function ContactPage() {
 
                   <div>
                     <label
+                      htmlFor="pickupLocation"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Pickup Location *
+                    </label>
+
+                    <input
+                      type="text"
+                      id="pickupLocation"
+                      name="pickupLocation"
+                      required
+                      value={formData.pickupLocation}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                      placeholder="Enter pickup location, e.g. Gorakhpur Railway Station"
+                    />
+                  </div>
+
+                  <div>
+                    <label
                       htmlFor="destination"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Destination *
                     </label>
 
-                    <select
+                    <input
+                      type="text"
                       id="destination"
                       name="destination"
                       required
                       value={formData.destination}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
-                    >
-                      <option value="">
-                        Select a destination
-                      </option>
-
-                      <option value="Local Gorakhpur">
-                        Local Gorakhpur
-                      </option>
-
-                      <option value="Gorakhpur Airport">
-                        Gorakhpur Airport
-                      </option>
-
-                      <option value="Gorakhpur Railway Station">
-                        Gorakhpur Railway Station
-                      </option>
-
-                      <option value="Gorakhnath Temple">
-                        Gorakhnath Temple
-                      </option>
-
-                      <option value="Ramgarh Tal">
-                        Ramgarh Tal / Nauka Vihar
-                      </option>
-
-                      <option value="Ayodhya">
-                        Ayodhya
-                      </option>
-
-                      <option value="Varanasi">
-                        Varanasi / Banaras
-                      </option>
-
-                      <option value="Kushinagar">
-                        Kushinagar
-                      </option>
-
-                      <option value="Lucknow">
-                        Lucknow
-                      </option>
-
-                      <option value="Sonauli">
-                        Sonauli
-                      </option>
-
-                      <option value="Nepal">
-                        Nepal
-                      </option>
-
-                      <option value="Pokhara">
-                        Pokhara
-                      </option>
-
-                      <option value="Other">
-                        Other Destination
-                      </option>
-                    </select>
+                      placeholder="Enter destination, e.g. Ayodhya, Varanasi, Lucknow"
+                    />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -580,7 +548,7 @@ export function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600 resize-none"
-                      placeholder="Pickup location, drop location, preferred vehicle or other details"
+                      placeholder="Preferred vehicle, pickup time, return-trip details or other special requirements"
                     />
                   </div>
 
@@ -735,6 +703,19 @@ export function ContactPage() {
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-900">
+                  Can I book a cab to any destination?
+                </h3>
+
+                <p className="mt-2 leading-relaxed">
+                  Yes. Enter your pickup location and destination
+                  in the booking form. You can request local,
+                  one-way or outstation travel based on your trip
+                  requirements.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">
                   Can I book Gorakhpur to Ayodhya cab?
                 </h3>
 
@@ -765,7 +746,8 @@ export function ContactPage() {
                 <p className="mt-2 leading-relaxed">
                   Popular routes include Gorakhpur to Kushinagar,
                   Lucknow, Sonauli, Nepal, Pokhara, Ayodhya and
-                  Varanasi.
+                  Varanasi. Other destinations can also be
+                  requested through the booking form.
                 </p>
               </div>
 

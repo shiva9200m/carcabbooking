@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { Link } from "react-router-dom";
 import {
@@ -12,6 +12,7 @@ import {
   Plane,
   Train,
   Car,
+  Send,
 } from "lucide-react";
 
 import Slider from "react-slick";
@@ -25,6 +26,9 @@ import {
 } from "@/data/travelData";
 
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
+import { trackEvent } from "@/analytics/GA4";
+
+const PRIMARY_PHONE = "+918810990496";
 
 const FadeInWhenVisible = ({
   children,
@@ -69,6 +73,55 @@ const FadeInWhenVisible = ({
 };
 
 export function HomePage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    pickupLocation: "",
+    destination: "",
+    date: "",
+    guests: "2",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData((current) => ({
+      ...current,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    trackEvent("booking_form_submit", {
+      passengers: formData.guests || "Not selected",
+      page_path: window.location.pathname,
+      source: "home_booking_form",
+    });
+
+    const whatsappMessage = `Hi Car Cab Booking,
+
+I want to book a cab.
+
+Name: ${formData.name}
+Email: ${formData.email}
+Pickup Location: ${formData.pickupLocation}
+Destination: ${formData.destination}
+Travel Date: ${formData.date}
+Passengers: ${formData.guests}
+Trip Details: ${formData.message || "Not provided"}`;
+
+    const whatsappUrl = `https://wa.me/${PRIMARY_PHONE.replace(
+      "+",
+      ""
+    )}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
   const features = [
     {
       icon: Globe,
@@ -302,7 +355,7 @@ export function HomePage() {
               </motion.button>
             </Link>
 
-            <Link to="/contact">
+            <a href="#booking-form">
               <motion.button
                 whileHover={{
                   scale: 1.05,
@@ -314,8 +367,198 @@ export function HomePage() {
               >
                 Book a Cab
               </motion.button>
-            </Link>
+            </a>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FULL BOOKING FORM */}
+
+      <section id="booking-form" className="py-16 bg-white scroll-mt-24">
+        <div className="container mx-auto px-4">
+          <FadeInWhenVisible>
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Book Your Cab from Gorakhpur
+                </h2>
+
+                <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                  Fill in your complete trip details below. After submission,
+                  WhatsApp will open with your booking information ready to send.
+                </p>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="rounded-3xl bg-slate-50 p-6 md:p-8 shadow-xl ring-1 ring-slate-200"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="home-name"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Full Name *
+                    </label>
+
+                    <input
+                      type="text"
+                      id="home-name"
+                      name="name"
+                      required
+                      autoComplete="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="home-email"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Email Address *
+                    </label>
+
+                    <input
+                      type="email"
+                      id="home-email"
+                      name="email"
+                      required
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                      placeholder="example@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="home-pickupLocation"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Pickup Location *
+                    </label>
+
+                    <input
+                      type="text"
+                      id="home-pickupLocation"
+                      name="pickupLocation"
+                      required
+                      value={formData.pickupLocation}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                      placeholder="Enter pickup location, e.g. Gorakhpur Railway Station"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="home-destination"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Destination *
+                    </label>
+
+                    <input
+                      type="text"
+                      id="home-destination"
+                      name="destination"
+                      required
+                      value={formData.destination}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                      placeholder="Enter destination, e.g. Nepal, Ayodhya, Varanasi"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="home-date"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Travel Date *
+                    </label>
+
+                    <input
+                      type="date"
+                      id="home-date"
+                      name="date"
+                      required
+                      value={formData.date}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="home-guests"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Passengers
+                    </label>
+
+                    <select
+                      id="home-guests"
+                      name="guests"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
+                    >
+                      <option value="1">1 Passenger</option>
+                      <option value="2">2 Passengers</option>
+                      <option value="3">3 Passengers</option>
+                      <option value="4">4 Passengers</option>
+                      <option value="5+">5+ Passengers</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <label
+                    htmlFor="home-message"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Trip Details
+                  </label>
+
+                  <textarea
+                    id="home-message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600 resize-none"
+                    placeholder="Preferred vehicle, pickup time, return-trip details or other special requirements"
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  whileHover={{
+                    scale: 1.02,
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                  }}
+                  className="mt-6 w-full px-6 py-4 bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow flex items-center justify-center gap-2"
+                >
+                  <Send className="w-5 h-5" />
+                  Continue Booking on WhatsApp
+                </motion.button>
+
+                <p className="mt-4 text-center text-sm text-gray-500">
+                  Your booking details will be prepared in WhatsApp. You can review
+                  them before sending the message.
+                </p>
+              </form>
+            </div>
+          </FadeInWhenVisible>
         </div>
       </section>
 
