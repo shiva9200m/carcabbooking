@@ -1,18 +1,292 @@
-import { useState, useRef } from 'react';
-import { motion, useInView } from 'motion/react';
-import { Search, SlidersHorizontal, MapPin } from 'lucide-react';
-import { destinations } from '@/data/travelData';
-import { ImageWithFallback } from '@/components/common/ImageWithFallback';
+import { useState, useRef } from "react";
+import { motion, useInView } from "motion/react";
+import { Search, SlidersHorizontal, MapPin } from "lucide-react";
 
-const FadeInWhenVisible = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+import {
+  destinations as existingDestinations,
+} from "@/data/travelData";
+
+import { ImageWithFallback } from "@/components/common/ImageWithFallback";
+
+/* =========================================================
+   LOCAL DESTINATION IMAGES
+   ========================================================= */
+
+import PrayagrajImg from "@/assets/destinations/prayagraj.jpg";
+import AgraImg from "@/assets/destinations/agra.jpg";
+import MathuraVrindavanImg from "@/assets/destinations/mathura-vrindavan.jpg";
+import DelhiImg from "@/assets/destinations/delhi.jpg";
+import LucknowImg from "@/assets/destinations/lucknow.jpg";
+import HaridwarImg from "@/assets/destinations/haridwar.jpg";
+import RishikeshImg from "@/assets/destinations/rishikesh.jpg";
+import NainitalImg from "@/assets/destinations/nainital.jpg";
+import JimCorbettImg from "@/assets/destinations/jim-corbett.jpg";
+import JaipurImg from "@/assets/destinations/jaipur.jpg";
+import UdaipurImg from "@/assets/destinations/udaipur.jpg";
+import JaisalmerImg from "@/assets/destinations/jaisalmer.jpg";
+import ShimlaImg from "@/assets/destinations/shimla.jpg";
+import MussoorieImg from "@/assets/destinations/mussoorie.jpg";
+import AmritsarImg from "@/assets/destinations/amritsar.jpg";
+import ChitrakootImg from "@/assets/destinations/chitrakoot.jpg";
+import VindhyachalImg from "@/assets/destinations/vindhyachal.jpg";
+
+/* =========================================================
+   ADDITIONAL POPULAR DESTINATIONS
+   ========================================================= */
+
+const additionalDestinations = [
+  {
+    id: 101,
+    name: "Prayagraj",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: PrayagrajImg,
+    country: "India",
+    budget: "budget",
+    description:
+      "Popular pilgrimage destination known for Triveni Sangam.",
+  },
+  {
+    id: 102,
+    name: "Agra",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: AgraImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Visit the Taj Mahal and other famous heritage attractions.",
+  },
+  {
+    id: 103,
+    name: "Mathura & Vrindavan",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: MathuraVrindavanImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Popular Krishna pilgrimage destination for families and devotees.",
+  },
+  {
+    id: 104,
+    name: "Delhi",
+    location: "Delhi",
+    price: "",
+    duration: "",
+    image: DelhiImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Explore India Gate, Red Fort, markets and major city attractions.",
+  },
+  {
+    id: 105,
+    name: "Lucknow",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: LucknowImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Popular city destination for business, family and leisure travel.",
+  },
+  {
+    id: 106,
+    name: "Haridwar",
+    location: "Uttarakhand",
+    price: "",
+    duration: "",
+    image: HaridwarImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Pilgrimage destination famous for Har Ki Pauri and Ganga Aarti.",
+  },
+  {
+    id: 107,
+    name: "Rishikesh",
+    location: "Uttarakhand",
+    price: "",
+    duration: "",
+    image: RishikeshImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Popular for temples, yoga, river views and adventure tourism.",
+  },
+  {
+    id: 108,
+    name: "Nainital",
+    location: "Uttarakhand",
+    price: "",
+    duration: "",
+    image: NainitalImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Beautiful hill station famous for lakes and mountain scenery.",
+  },
+  {
+    id: 109,
+    name: "Jim Corbett",
+    location: "Uttarakhand",
+    price: "",
+    duration: "",
+    image: JimCorbettImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Popular wildlife destination for jungle safari and family holidays.",
+  },
+  {
+    id: 110,
+    name: "Jaipur",
+    location: "Rajasthan",
+    price: "",
+    duration: "",
+    image: JaipurImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Explore forts, palaces and the heritage of Rajasthan's Pink City.",
+  },
+  {
+    id: 111,
+    name: "Udaipur",
+    location: "Rajasthan",
+    price: "",
+    duration: "",
+    image: UdaipurImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Beautiful Rajasthan destination famous for lakes and royal palaces.",
+  },
+  {
+    id: 112,
+    name: "Jaisalmer",
+    location: "Rajasthan",
+    price: "",
+    duration: "",
+    image: JaisalmerImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Experience desert tourism, forts and Rajasthan culture.",
+  },
+  {
+    id: 113,
+    name: "Shimla",
+    location: "Himachal Pradesh",
+    price: "",
+    duration: "",
+    image: ShimlaImg,
+    country: "India",
+    budget: "luxury",
+    description:
+      "Popular hill station for family vacations and mountain holidays.",
+  },
+  {
+    id: 114,
+    name: "Mussoorie",
+    location: "Uttarakhand",
+    price: "",
+    duration: "",
+    image: MussoorieImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Beautiful hill destination known for mountain views and pleasant weather.",
+  },
+  {
+    id: 115,
+    name: "Amritsar",
+    location: "Punjab",
+    price: "",
+    duration: "",
+    image: AmritsarImg,
+    country: "India",
+    budget: "medium",
+    description:
+      "Visit the Golden Temple and other famous attractions in Punjab.",
+  },
+  {
+    id: 116,
+    name: "Chitrakoot",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: ChitrakootImg,
+    country: "India",
+    budget: "budget",
+    description:
+      "Important religious destination for pilgrimage and family trips.",
+  },
+  {
+    id: 117,
+    name: "Vindhyachal",
+    location: "Uttar Pradesh",
+    price: "",
+    duration: "",
+    image: VindhyachalImg,
+    country: "India",
+    budget: "budget",
+    description:
+      "Popular temple destination for pilgrimage travel from Gorakhpur.",
+  },
+];
+
+/*
+ * Existing travelData.ts records use destination names inside the
+ * country field. Normalize them so the country filter remains clean.
+ */
+const normalizedExistingDestinations = existingDestinations.map(
+  (destination) => ({
+    ...destination,
+    country:
+      destination.location.toLowerCase() === "nepal"
+        ? "Nepal"
+        : "India",
+  }),
+);
+
+const allDestinations = [
+  ...normalizedExistingDestinations,
+  ...additionalDestinations,
+];
+
+/* =========================================================
+   ANIMATION COMPONENT
+   ========================================================= */
+
+const FadeInWhenVisible = ({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-50px",
+  });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 30 }
+      }
       transition={{ duration: 0.5, delay }}
     >
       {children}
@@ -20,34 +294,60 @@ const FadeInWhenVisible = ({ children, delay = 0 }: { children: React.ReactNode;
   );
 };
 
+/* =========================================================
+   DESTINATIONS PAGE
+   ========================================================= */
+
 export function DestinationsPage() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState('all');
-  const [selectedBudget, setSelectedBudget] = useState('all');
-  
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("all");
+  const [selectedBudget, setSelectedBudget] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
 
-  const countries = ['all', ...Array.from(new Set(destinations.map(d => d.country)))];
-  const budgets = ['all', 'budget', 'medium', 'luxury'];
+  const countries = [
+    "all",
+    ...Array.from(
+      new Set(
+        allDestinations.map(
+          (destination) => destination.country,
+        ),
+      ),
+    ),
+  ];
 
-  const filteredDestinations = destinations.filter(dest => {
-    const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         dest.location.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCountry = selectedCountry === 'all' || dest.country === selectedCountry;
-    const matchesBudget = selectedBudget === 'all' || dest.budget === selectedBudget;
-    
-    return matchesSearch && matchesCountry && matchesBudget;
-  });
+  const budgets = ["all", "budget", "medium", "luxury"];
+
+  const filteredDestinations = allDestinations.filter(
+    (destination) => {
+      const search = searchTerm.trim().toLowerCase();
+
+      const matchesSearch =
+        destination.name.toLowerCase().includes(search) ||
+        destination.location.toLowerCase().includes(search) ||
+        destination.country.toLowerCase().includes(search) ||
+        destination.description.toLowerCase().includes(search);
+
+      const matchesCountry =
+        selectedCountry === "all" ||
+        destination.country === selectedCountry;
+
+      const matchesBudget =
+        selectedBudget === "all" ||
+        destination.budget === selectedBudget;
+
+      return matchesSearch && matchesCountry && matchesBudget;
+    },
+  );
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="relative h-80 flex items-center justify-center overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="relative flex h-80 items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1713959989861-2425c95e9777?crop=entropy&cs=tinysrgb&fit=max&fm=webp&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3VudGFpbiUyMGxhbmRzY2FwZSUyMHRyYXZlbHxlbnwxfHx8fDE3NjgzOTMxNDB8MA&ixlib=rb-4.1.0&q=80&w=900"
-            alt="Outstation cab destinations from Gorakhpur"
-            className="w-full h-full object-cover"
+            src={NainitalImg}
+            alt="Popular cab destinations from Gorakhpur"
+            className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
         </div>
@@ -56,80 +356,81 @@ export function DestinationsPage() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-4"
+            className="mb-4 text-4xl font-bold md:text-6xl"
           >
-            Cab Destinations from Gorakhpur
+            Popular Cab Destinations from Gorakhpur
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl"
+            className="mx-auto max-w-4xl text-lg md:text-xl"
           >
-            Book taxi routes for Nepal, Pokhara, Banaras, Ayodhya, Kushinagar and more
+            Explore religious places, hill stations, heritage cities,
+            family holiday destinations and Nepal tour routes
           </motion.p>
         </div>
       </section>
 
-      {/* Destination Intro for SEO */}
-      <section className="py-12 bg-white">
+      {/* SEO INTRO */}
+      <section className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <div className="mx-auto max-w-5xl text-center">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
               Outstation Cab Routes from Gorakhpur
             </h2>
-            <p className="text-gray-600 mt-4 leading-relaxed">
-              Book a Gorakhpur to Nepal tour package with comfortable cabs for
-              Pokhara, Pashupatinath Temple, Muktinath Temple and other popular
-              destinations. Our outstation cab service from Gorakhpur also covers
-              Banaras, Ayodhya, Kushinagar, Lucknow and nearby routes with
-              experienced drivers and transparent pricing.
+
+            <p className="mt-4 leading-relaxed text-gray-600">
+              Book comfortable cabs from Gorakhpur to Nepal, Pokhara,
+              Banaras, Ayodhya, Prayagraj, Agra, Mathura, Vrindavan,
+              Delhi, Lucknow, Haridwar, Rishikesh, Nainital, Jaipur and
+              many other popular destinations.
             </p>
-            <p className="text-gray-600 mt-4 leading-relaxed">
-              Choose one-way or round-trip packages for local travel, pilgrimage
-              journeys and long-distance routes. For a Muktinath Temple tour from
-              Gorakhpur or Pashupatinath Temple tour from Gorakhpur, contact our
-              team for route planning, clean cars and 24/7 booking support.
+
+            <p className="mt-4 leading-relaxed text-gray-600">
+              Choose one-way or round-trip cab booking for pilgrimage
+              journeys, family holidays, sightseeing tours and
+              long-distance travel. We provide flexible pickup options
+              and 24/7 booking support from Gorakhpur.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Search and Filters */}
-      <section className="py-8 bg-white shadow-md sticky top-20 z-40">
+      {/* SEARCH AND FILTERS */}
+      <section className="sticky top-20 z-40 bg-white py-8 shadow-md">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Search */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <div className="flex flex-col gap-4 md:flex-row">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
               <input
                 type="text"
-                placeholder="Search cab routes..."
+                placeholder="Search destinations, states or cab routes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                className="w-full rounded-full border border-gray-300 py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-sky-600"
               />
             </div>
 
-            {/* Filter Toggle Button (Mobile) */}
             <button
+              type="button"
               onClick={() => setShowFilters(!showFilters)}
-              className="md:hidden px-6 py-3 bg-sky-600 text-white rounded-full flex items-center justify-center gap-2"
+              className="flex items-center justify-center gap-2 rounded-full bg-sky-600 px-6 py-3 text-white md:hidden"
             >
-              <SlidersHorizontal className="w-5 h-5" />
+              <SlidersHorizontal className="h-5 w-5" />
               Filters
             </button>
 
-            {/* Desktop Filters */}
-            <div className="hidden md:flex gap-4">
+            <div className="hidden gap-4 md:flex">
               <select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                className="rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
               >
-                {countries.map(country => (
+                {countries.map((country) => (
                   <option key={country} value={country}>
-                    {country === 'all' ? 'All' : country}
+                    {country === "all" ? "All Countries" : country}
                   </option>
                 ))}
               </select>
@@ -137,33 +438,33 @@ export function DestinationsPage() {
               <select
                 value={selectedBudget}
                 onChange={(e) => setSelectedBudget(e.target.value)}
-                className="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                className="rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
               >
-                {budgets.map(budget => (
+                {budgets.map((budget) => (
                   <option key={budget} value={budget}>
-                    {budget === 'all' ? 'All Budgets' : budget.charAt(0).toUpperCase() + budget.slice(1)}
+                    {budget === "all"
+                      ? "All Budgets"
+                      : budget.charAt(0).toUpperCase() + budget.slice(1)}
                   </option>
                 ))}
               </select>
             </div>
           </div>
 
-          {/* Mobile Filters */}
           {showFilters && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 flex flex-col gap-3"
+              animate={{ opacity: 1, height: "auto" }}
+              className="mt-4 flex flex-col gap-3 md:hidden"
             >
               <select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                className="rounded-full border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
               >
-                {countries.map(country => (
+                {countries.map((country) => (
                   <option key={country} value={country}>
-                    {country === 'all' ? 'All Countries' : country}
+                    {country === "all" ? "All Countries" : country}
                   </option>
                 ))}
               </select>
@@ -171,11 +472,13 @@ export function DestinationsPage() {
               <select
                 value={selectedBudget}
                 onChange={(e) => setSelectedBudget(e.target.value)}
-                className="px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"
+                className="rounded-full border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
               >
-                {budgets.map(budget => (
+                {budgets.map((budget) => (
                   <option key={budget} value={budget}>
-                    {budget === 'all' ? 'All Budgets' : budget.charAt(0).toUpperCase() + budget.slice(1)}
+                    {budget === "all"
+                      ? "All Budgets"
+                      : budget.charAt(0).toUpperCase() + budget.slice(1)}
                   </option>
                 ))}
               </select>
@@ -184,92 +487,96 @@ export function DestinationsPage() {
         </div>
       </section>
 
-      {/* Popular Routes and Travel Benefits */}
-      <section className="py-10 bg-white border-t border-b border-gray-200">
+      {/* POPULAR ROUTES */}
+      <section className="border-b border-t border-gray-200 bg-white py-10">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+          <div className="mx-auto max-w-6xl text-center">
+            <h2 className="mb-6 text-2xl font-semibold text-gray-900">
               Popular Cab Routes from Gorakhpur
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left text-gray-600">
-              <p>Gorakhpur to Nepal cab service for secure cross-border travel.</p>
-              <p>Gorakhpur to Pokhara one-way and round-trip taxi bookings.</p>
-              <p>Gorakhpur to Banaras pilgrim and tourist cab packages.</p>
-              <p>Gorakhpur to Ayodhya, Kushinagar, Lucknow and Sonauli routes.</p>
+            </h2>
+
+            <div className="grid grid-cols-1 gap-x-12 gap-y-4 text-left text-gray-600 sm:grid-cols-2">
+              <p>Gorakhpur to Nepal cab service for comfortable cross-border travel.</p>
+              <p>Gorakhpur to Pokhara one-way and round-trip taxi booking.</p>
+              <p>Gorakhpur to Banaras / Varanasi pilgrimage cab service.</p>
+              <p>Gorakhpur to Ayodhya cab for temple and family tours.</p>
+              <p>Gorakhpur to Prayagraj outstation taxi booking.</p>
+              <p>Gorakhpur to Mathura & Vrindavan cab booking.</p>
+              <p>Gorakhpur to Agra and Delhi cab service.</p>
+              <p>Gorakhpur to Haridwar & Rishikesh tour cab.</p>
+              <p>Gorakhpur to Nainital and Jim Corbett cab booking.</p>
+              <p>Gorakhpur to Jaipur, Udaipur and Rajasthan tour cab.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Destinations Grid */}
-      <section className="py-16 bg-gray-50">
+      {/* DESTINATIONS GRID */}
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <div className="mb-8">
+          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-gray-600">
-              Showing <span className="font-semibold">{filteredDestinations.length}</span> cab destinations
+              Showing{" "}
+              <span className="font-semibold text-gray-900">
+                {filteredDestinations.length}
+              </span>{" "}
+              cab destinations
+            </p>
+
+            <p className="text-sm text-gray-500">
+              India & Nepal Tour Routes
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredDestinations.map((destination, index) => (
-              <FadeInWhenVisible key={destination.id} delay={index * 0.05}>
+              <FadeInWhenVisible
+                key={`${destination.id}-${destination.name}`}
+                delay={Math.min(index, 8) * 0.05}
+              >
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                  className="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl"
                 >
-                  <div className="relative h-72 overflow-hidden">
+                  <div className="relative h-72 overflow-hidden bg-gray-100">
                     <ImageWithFallback
                       src={destination.image}
-                      alt={destination.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      alt={`${destination.name} cab booking from Gorakhpur`}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    
-                    {/* Overlay */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <p className="text-white text-sm mb-4">{destination.description}</p>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="w-full py-2 bg-white text-sky-600 rounded-full font-semibold"
-                        >
-                          View Details
-                        </motion.button>
-                      </div>
-                    </div> */}
 
-                    {/* Budget Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${
-                        destination.budget === 'luxury' ? 'bg-yellow-500' :
-                        destination.budget === 'medium' ? 'bg-blue-500' :
-                        'bg-green-500'
-                      }`}>
-                        {destination.budget.charAt(0).toUpperCase() + destination.budget.slice(1)}
+                    <div className="absolute right-4 top-4">
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${
+                          destination.budget === "luxury"
+                            ? "bg-yellow-500"
+                            : destination.budget === "medium"
+                              ? "bg-blue-500"
+                              : "bg-green-500"
+                        }`}
+                      >
+                        {destination.budget.charAt(0).toUpperCase() +
+                          destination.budget.slice(1)}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-1">{destination.name}</h3>
-                        <div className="flex items-center gap-1 text-gray-600">
-                          <MapPin className="w-4 h-4" />
-                          <span className="text-sm">{destination.location}</span>
-                        </div>
-                      </div>
+                    <h3 className="mb-2 text-2xl font-bold text-gray-900">
+                      {destination.name}
+                    </h3>
+
+                    <div className="mb-4 flex items-center gap-1 text-gray-600">
+                      <MapPin className="h-4 w-4 shrink-0" />
+                      <span className="text-sm">
+                        {destination.location}
+                      </span>
                     </div>
-                    
-                    <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                      {/* <div>
-                        <p className="text-sm text-gray-500">Starting from</p>
-                        <p className="text-2xl font-bold text-sky-600">{destination.price}</p>
-                      </div> */}
-                      {/* <div className="text-right">
-                        <p className="text-sm text-gray-500">Duration</p>
-                        <p className="font-semibold text-gray-900">{destination.duration}</p>
-                      </div> */}
+
+                    <div className="border-t border-gray-100 pt-4">
+                      <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                        {destination.description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -278,15 +585,19 @@ export function DestinationsPage() {
           </div>
 
           {filteredDestinations.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No cab destinations found matching your criteria.</p>
+            <div className="py-20 text-center">
+              <p className="text-lg text-gray-500">
+                No cab destinations found matching your search.
+              </p>
+
               <button
+                type="button"
                 onClick={() => {
-                  setSearchTerm('');
-                  setSelectedCountry('all');
-                  setSelectedBudget('all');
+                  setSearchTerm("");
+                  setSelectedCountry("all");
+                  setSelectedBudget("all");
                 }}
-                className="mt-4 px-6 py-2 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors"
+                className="mt-4 rounded-full bg-sky-600 px-6 py-2 text-white transition-colors hover:bg-sky-700"
               >
                 Clear Filters
               </button>
