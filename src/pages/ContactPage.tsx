@@ -90,16 +90,15 @@ export function ContactPage() {
 
     const message = [
       "Hi Car Cab Booking,",
-      "",
       "I want to book a cab.",
-      "",
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      `Pickup Location: ${formData.pickupLocation}`,
-      `Destination: ${formData.destination}`,
-      `Travel Date: ${formData.date}`,
-      `Passengers: ${formData.guests}`,
-      `Trip Details: ${formData.message || "Not provided"}`,
+      "Pickup Location:",
+      "Destination:",
+      "Travel Date:",
+      "Pickup Time:",
+      "Passengers:",
+      "Preferred Car:",
+      "Trip Type: One Way / Round Trip",
+      "Please share availability and fare details.",
     ].join("\n");
 
     const whatsappUrl = `https://wa.me/${PRIMARY_PHONE.replace(
@@ -321,7 +320,7 @@ export function ContactPage() {
                 "+",
                 ""
               )}?text=${encodeURIComponent(
-                "Hi Car Cab Booking, I want to book a cab from Gorakhpur."
+                "Hi Car Cab Booking,\nI want to book a cab.\nPickup Location:\nDestination:\nTravel Date:\nPickup Time:\nPassengers:\nPreferred Car:\nTrip Type: One Way / Round Trip\nPlease share availability and fare details."
               )}`}
               target="_blank"
               rel="noopener noreferrer"

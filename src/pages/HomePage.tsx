@@ -104,16 +104,15 @@ export function HomePage() {
     });
 
     const whatsappMessage = `Hi Car Cab Booking,
-
 I want to book a cab.
-
-Name: ${formData.name}
-Email: ${formData.email}
-Pickup Location: ${formData.pickupLocation}
-Destination: ${formData.destination}
-Travel Date: ${formData.date}
-Passengers: ${formData.guests}
-Trip Details: ${formData.message || "Not provided"}`;
+Pickup Location:
+Destination:
+Travel Date:
+Pickup Time:
+Passengers:
+Preferred Car:
+Trip Type: One Way / Round Trip
+Please share availability and fare details.`;
 
     const whatsappUrl = `https://wa.me/${PRIMARY_PHONE.replace(
       "+",

@@ -185,7 +185,7 @@ export function Footer() {
                   "+",
                   ""
                 )}?text=${encodeURIComponent(
-                  "Hi Car Cab Booking, I want to book a cab from Gorakhpur."
+                  "Hi Car Cab Booking,\nI want to book a cab.\nPickup Location:\nDestination:\nTravel Date:\nPickup Time:\nPassengers:\nPreferred Car:\nTrip Type: One Way / Round Trip\nPlease share availability and fare details."
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
