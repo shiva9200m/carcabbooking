@@ -572,17 +572,15 @@ Please share availability and fare details.`;
               </h2>
 
               <p className="text-slate-600 mt-5 leading-relaxed">
-                Car Cab Booking provides local taxi
-                service in Gorakhpur for city rides,
-                airport transfers, railway station
-                pickup, sightseeing and outstation
-                travel.
+                Car Cab Booking provides car booking and taxi service in
+                Gorakhpur for local travel, airport and railway transfers,
+                and outstation trips.
               </p>
 
               <p className="text-slate-600 mt-5 leading-relaxed">
-                If you are searching for a travel agency near me, car rental in
-                Gorakhpur, or the best tour and travel in Gorakhpur, contact us
-                for local, one-way, Nepal tour and round-trip cab booking.
+                Book a car for local travel in Gorakhpur or an outstation journey.
+                Call or WhatsApp Car Cab Booking to confirm your pickup, vehicle
+                and fare.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">

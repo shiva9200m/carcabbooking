@@ -89,7 +89,7 @@ export function PackagesPage() {
             }}
             className="mb-4 text-5xl font-bold md:text-6xl"
           >
-            Cab Booking Packages
+            Cars & Cab Packages in Gorakhpur
           </motion.h1>
 
           <motion.p
@@ -120,7 +120,7 @@ export function PackagesPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-              Transparent Cab Booking Packages in Gorakhpur
+              Choose a Car for Your Gorakhpur Trip
             </h2>
 
             <p className="mt-4 leading-relaxed text-gray-600">
@@ -298,7 +298,7 @@ export function PackagesPage() {
                           hover:shadow-lg
                         "
                       >
-                        Book Now
+                        Call for Availability
                       </motion.a>
                     </div>
                   </div>

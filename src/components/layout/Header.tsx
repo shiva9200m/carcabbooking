@@ -215,7 +215,7 @@ export function Header() {
               lg:text-base
             "
           >
-            Book Now
+            Call to Book
           </motion.a>
 
           {/* ============================= */}
@@ -339,7 +339,7 @@ export function Header() {
                   hover:shadow-md
                 "
               >
-                Book Now
+                Call to Book
               </a>
             </nav>
           </motion.div>

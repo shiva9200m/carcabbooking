@@ -297,7 +297,6 @@ const FadeInWhenVisible = ({
 /* =========================================================
    DESTINATIONS PAGE
    ========================================================= */
-
 export function DestinationsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("all");
