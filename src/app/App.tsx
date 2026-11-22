@@ -13,6 +13,11 @@ import { PackagesPage } from "@/pages/PackagesPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { GuidesPage } from "@/pages/GuidesPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { ServicePage } from "@/pages/ServicePage";
+import {
+  landingPages,
+  landingPagePath,
+} from "@/data/landingPages";
 
 import { Seo } from "@/seo/Seo";
 
@@ -56,6 +61,15 @@ export default function App() {
               path="/contact"
               element={<ContactPage />}
             />
+
+            {/* SEO LANDING PAGES (src/data/landingPages.ts) */}
+            {landingPages.map((page) => (
+              <Route
+                key={page.slug}
+                path={landingPagePath(page.slug)}
+                element={<ServicePage page={page} />}
+              />
+            ))}
 
             <Route
               path="*"

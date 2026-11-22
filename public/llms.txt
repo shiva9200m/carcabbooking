@@ -1,0 +1,29 @@
+# Car Cab Booking
+
+> Car Cab Booking provides cab booking and taxi service in Gorakhpur, Uttar Pradesh, India: local taxi, Gorakhpur Airport and railway station pickup, car rental with driver, and one-way or round-trip outstation trips to Ayodhya, Varanasi, Lucknow, Nepal and Pokhara. Bookings are made by phone or WhatsApp.
+
+Contact: +91 8810990496, +91 7084183421
+Email: ajaysingh80098@gmail.com
+Website: https://www.carcabbooking.com/
+Service area: Gorakhpur and outstation routes from Gorakhpur
+
+## Main pages
+- [Home: cab booking and taxi service in Gorakhpur](https://www.carcabbooking.com/)
+- [Cars and cab packages](https://www.carcabbooking.com/packages)
+- [Outstation destinations](https://www.carcabbooking.com/destinations)
+- [Gorakhpur taxi guide](https://www.carcabbooking.com/guides)
+- [Contact](https://www.carcabbooking.com/contact)
+
+## Services and routes
+- [Taxi service in Gorakhpur](https://www.carcabbooking.com/taxi-service-in-gorakhpur)
+- [Online cab booking in Gorakhpur](https://www.carcabbooking.com/online-cab-booking-gorakhpur)
+- [Outstation taxi from Gorakhpur](https://www.carcabbooking.com/outstation-taxi-service-gorakhpur)
+- [Car rental in Gorakhpur with driver](https://www.carcabbooking.com/car-rental-in-gorakhpur)
+- [Gorakhpur Airport taxi](https://www.carcabbooking.com/gorakhpur-airport-taxi)
+- [Gorakhpur Railway Station taxi](https://www.carcabbooking.com/gorakhpur-railway-station-taxi)
+- [Gorakhpur to Ayodhya taxi](https://www.carcabbooking.com/gorakhpur-to-ayodhya-taxi)
+- [Gorakhpur to Varanasi taxi](https://www.carcabbooking.com/gorakhpur-to-varanasi-taxi)
+- [Gorakhpur to Lucknow taxi](https://www.carcabbooking.com/gorakhpur-to-lucknow-taxi)
+- [Gorakhpur to Nepal taxi](https://www.carcabbooking.com/gorakhpur-to-nepal-taxi)
+- [Gorakhpur to Pokhara taxi](https://www.carcabbooking.com/gorakhpur-to-pokhara-taxi)
+- [Tour and travels taxi service](https://www.carcabbooking.com/tour-and-travels-gorakhpur)

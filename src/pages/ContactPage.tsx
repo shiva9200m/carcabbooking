@@ -22,6 +22,15 @@ const GOOGLE_BUSINESS_URL =
 const PRIMARY_PHONE = "+918810990496";
 const EMAIL = "ajaysingh80098@gmail.com";
 
+const getLocalDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
+
 const FadeInWhenVisible = ({
   children,
   delay = 0,
@@ -78,6 +87,11 @@ export function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (formData.date < getLocalDate()) {
+      window.alert("Please select today or a future travel date.");
+      return;
+    }
+
     // GA4: track booking-form lead.
     // Do not send name, email, pickup location,
     // destination details, message or other personal data to GA4.
@@ -87,18 +101,34 @@ export function ContactPage() {
       source: "contact_booking_form",
     });
 
-    const message = [
+    const formatTravelDate = (value: string) => {
+      const [year, month, day] = value.split("-");
+      return year && month && day ? `${day}-${month}-${year}` : value;
+    };
+
+    const bookingLines = [
       "Hi Car Cab Booking,",
       "I want to book a cab.",
-      "Pickup Location:",
-      "Destination:",
-      "Travel Date:",
-      "Pickup Time:",
-      "Passengers:",
-      "Preferred Car:",
-      "Trip Type: One Way / Round Trip",
-      "Please share availability and fare details.",
-    ].join("\n");
+      "",
+      `Name: ${formData.name.trim()}`,
+      `Pickup Location: ${formData.pickupLocation.trim()}`,
+      `Destination: ${formData.destination.trim()}`,
+      `Travel Date: ${formatTravelDate(formData.date)}`,
+      `Passengers: ${formData.guests}`,
+    ];
+
+    if (formData.email.trim()) {
+      bookingLines.push(`Email: ${formData.email.trim()}`);
+    }
+
+    if (formData.message.trim()) {
+      bookingLines.push(`Trip Details: ${formData.message.trim()}`);
+    }
+
+    bookingLines.push("", "Please share availability and fare details.");
+
+    const message = bookingLines.join("\n");
+
 
     const whatsappUrl = `https://wa.me/${PRIMARY_PHONE.replace(
       "+",
@@ -501,6 +531,7 @@ export function ContactPage() {
                         id="date"
                         name="date"
                         required
+                        min={getLocalDate()}
                         value={formData.date}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sky-600"

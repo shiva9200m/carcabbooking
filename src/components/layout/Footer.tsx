@@ -9,6 +9,11 @@ import {
   MessageCircle,
 } from "lucide-react";
 
+import {
+  landingPages,
+  landingPagePath,
+} from "@/data/landingPages";
+
 const GOOGLE_BUSINESS_URL =
   "https://share.google/0RjH4DRUBhenK3tYv";
 
@@ -24,24 +29,11 @@ export function Footer() {
     { name: "Contact", path: "/contact" },
   ];
 
-  const serviceLinks = [
-    {
-      name: "Local Taxi in Gorakhpur",
-      path: "/destinations",
-    },
-    {
-      name: "Outstation Cab from Gorakhpur",
-      path: "/destinations",
-    },
-    {
-      name: "Airport Pickup",
-      path: "/contact",
-    },
-    {
-      name: "Railway Station Pickup",
-      path: "/contact",
-    },
-  ];
+  // Every SEO landing page is linked from the footer on every page
+  const serviceLinks = landingPages.map((page) => ({
+    name: page.linkLabel,
+    path: landingPagePath(page.slug),
+  }));
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300">

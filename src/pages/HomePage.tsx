@@ -27,8 +27,19 @@ import {
 
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
 import { trackEvent } from "@/analytics/GA4";
+import { landingPagePath } from "@/data/landingPages";
+import { homeFaqs } from "@/data/pageSeo";
 
 const PRIMARY_PHONE = "+918810990496";
+
+const getLocalDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+};
 
 const FadeInWhenVisible = ({
   children,
@@ -97,22 +108,45 @@ export function HomePage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (formData.date < getLocalDate()) {
+      window.alert("Please select today or a future travel date.");
+      return;
+    }
+
     trackEvent("booking_form_submit", {
       passengers: formData.guests || "Not selected",
       page_path: window.location.pathname,
       source: "home_booking_form",
     });
 
-    const whatsappMessage = `Hi Car Cab Booking,
-I want to book a cab.
-Pickup Location:
-Destination:
-Travel Date:
-Pickup Time:
-Passengers:
-Preferred Car:
-Trip Type: One Way / Round Trip
-Please share availability and fare details.`;
+    const formatTravelDate = (value: string) => {
+      const [year, month, day] = value.split("-");
+      return year && month && day ? `${day}-${month}-${year}` : value;
+    };
+
+    const bookingLines = [
+      "Hi Car Cab Booking,",
+      "I want to book a cab.",
+      "",
+      `Name: ${formData.name.trim()}`,
+      `Pickup Location: ${formData.pickupLocation.trim()}`,
+      `Destination: ${formData.destination.trim()}`,
+      `Travel Date: ${formatTravelDate(formData.date)}`,
+      `Passengers: ${formData.guests}`,
+    ];
+
+    if (formData.email.trim()) {
+      bookingLines.push(`Email: ${formData.email.trim()}`);
+    }
+
+    if (formData.message.trim()) {
+      bookingLines.push(`Trip Details: ${formData.message.trim()}`);
+    }
+
+    bookingLines.push("", "Please share availability and fare details.");
+
+    const whatsappMessage = bookingLines.join("\n");
+
 
     const whatsappUrl = `https://wa.me/${PRIMARY_PHONE.replace(
       "+",
@@ -152,24 +186,28 @@ Please share availability and fare details.`;
     {
       icon: Car,
       title: "Local Taxi in Gorakhpur",
+      to: landingPagePath("taxi-service-in-gorakhpur"),
       description:
         "Book a local cab in Gorakhpur for city travel, shopping, family visits and everyday transportation.",
     },
     {
       icon: Plane,
       title: "Gorakhpur Airport Taxi",
+      to: landingPagePath("gorakhpur-airport-taxi"),
       description:
         "Book airport pickup and drop service for Gorakhpur Airport with convenient cab booking.",
     },
     {
       icon: Train,
       title: "Gorakhpur Railway Station Taxi",
+      to: landingPagePath("gorakhpur-railway-station-taxi"),
       description:
         "Book pickup or drop at Gorakhpur Railway Station for local and onward journeys.",
     },
     {
       icon: MapPin,
       title: "Gorakhpur Sightseeing Cab",
+      to: landingPagePath("taxi-service-in-gorakhpur"),
       description:
         "Book local sightseeing cab service for popular places across Gorakhpur.",
     },
@@ -191,53 +229,41 @@ Please share availability and fare details.`;
   ];
 
   const popularRoutes = [
-    "Gorakhpur to Ayodhya Cab",
-    "Gorakhpur to Varanasi Cab",
-    "Gorakhpur to Kushinagar Cab",
-    "Gorakhpur to Lucknow Cab",
-    "Gorakhpur to Sonauli Cab",
-    "Gorakhpur to Nepal Cab",
-    "Gorakhpur to Pokhara Cab",
+    {
+      label: "Gorakhpur to Ayodhya Cab",
+      to: landingPagePath("gorakhpur-to-ayodhya-taxi"),
+    },
+    {
+      label: "Gorakhpur to Varanasi Cab",
+      to: landingPagePath("gorakhpur-to-varanasi-taxi"),
+    },
+    {
+      label: "Gorakhpur to Kushinagar Cab",
+      to: "/destinations",
+    },
+    {
+      label: "Gorakhpur to Lucknow Cab",
+      to: landingPagePath("gorakhpur-to-lucknow-taxi"),
+    },
+    {
+      label: "Gorakhpur to Sonauli Cab",
+      to: landingPagePath("gorakhpur-to-nepal-taxi"),
+    },
+    {
+      label: "Gorakhpur to Nepal Cab",
+      to: landingPagePath("gorakhpur-to-nepal-taxi"),
+    },
+    {
+      label: "Gorakhpur to Pokhara Cab",
+      to: landingPagePath("gorakhpur-to-pokhara-taxi"),
+    },
+    {
+      label: "Outstation Taxi from Gorakhpur",
+      to: landingPagePath("outstation-taxi-service-gorakhpur"),
+    },
   ];
 
-  const faqs = [
-    {
-      question:
-        "Do you provide cab booking in Gorakhpur 24/7?",
-      answer:
-        "Yes. Car Cab Booking provides 24/7 booking support for local taxi service, airport pickup, railway station pickup and outstation cab journeys from Gorakhpur.",
-    },
-    {
-      question:
-        "Can I book a local taxi in Gorakhpur?",
-      answer:
-        "Yes. Local taxi booking is available for city travel and areas such as Mohaddipur, Golghar, Taramandal, Rapti Nagar, Gorakhnath and nearby locations.",
-    },
-    {
-      question:
-        "Do you provide Gorakhpur Airport taxi service?",
-      answer:
-        "Yes. You can book cab pickup and drop service for Gorakhpur Airport for local and onward travel.",
-    },
-    {
-      question:
-        "Can I book a taxi from Gorakhpur Railway Station?",
-      answer:
-        "Yes. Pickup and drop service is available for Gorakhpur Railway Station for city travel and outstation journeys.",
-    },
-    {
-      question:
-        "Which outstation routes are available from Gorakhpur?",
-      answer:
-        "Popular routes include Gorakhpur to Ayodhya, Varanasi, Kushinagar, Lucknow, Sonauli, Nepal and Pokhara.",
-    },
-    {
-      question:
-        "Do you provide one-way and round-trip cab booking?",
-      answer:
-        "Yes. You can contact us for one-way cab and round-trip booking based on your route and travel requirements.",
-    },
-  ];
+  const faqs = homeFaqs;
 
   const sliderSettings = {
     dots: true,
@@ -488,6 +514,7 @@ Please share availability and fare details.`;
                       id="home-date"
                       name="date"
                       required
+                      min={getLocalDate()}
                       value={formData.date}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-sky-600"
@@ -580,7 +607,34 @@ Please share availability and fare details.`;
               <p className="text-slate-600 mt-5 leading-relaxed">
                 Book a car for local travel in Gorakhpur or an outstation journey.
                 Call or WhatsApp Car Cab Booking to confirm your pickup, vehicle
-                and fare.
+                and fare. We also offer{" "}
+                <Link
+                  to={landingPagePath("car-rental-in-gorakhpur")}
+                  className="font-semibold text-sky-700 hover:underline"
+                >
+                  car rental in Gorakhpur with driver
+                </Link>
+                ,{" "}
+                <Link
+                  to={landingPagePath("online-cab-booking-gorakhpur")}
+                  className="font-semibold text-sky-700 hover:underline"
+                >
+                  online cab booking
+                </Link>{" "}
+                and{" "}
+                <Link
+                  to={landingPagePath("tour-and-travels-gorakhpur")}
+                  className="font-semibold text-sky-700 hover:underline"
+                >
+                  tourist car booking
+                </Link>
+                .
+              </p>
+
+              <p lang="hi" className="text-slate-600 mt-5 leading-relaxed">
+                गोरखपुर में कैब बुकिंग और टैक्सी सेवा के लिए कॉल या WhatsApp
+                करें। लोकल टैक्सी, एयरपोर्ट पिकअप, रेलवे स्टेशन पिकअप और
+                आउटस्टेशन कैब बुक करें।
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
@@ -628,7 +682,10 @@ Please share availability and fare details.`;
                   key={service.title}
                   delay={index * 0.1}
                 >
-                  <div className="rounded-2xl bg-slate-50 p-6 text-center shadow-sm ring-1 ring-slate-200 h-full">
+                  <Link
+                    to={service.to}
+                    className="block rounded-2xl bg-slate-50 p-6 text-center shadow-sm ring-1 ring-slate-200 h-full transition hover:ring-sky-300 hover:shadow-md"
+                  >
                     <service.icon className="w-10 h-10 mx-auto text-sky-600 mb-4" />
 
                     <h3 className="text-xl font-bold text-gray-900">
@@ -638,7 +695,7 @@ Please share availability and fare details.`;
                     <p className="mt-3 text-gray-600 leading-relaxed">
                       {service.description}
                     </p>
-                  </div>
+                  </Link>
                 </FadeInWhenVisible>
               )
             )}
@@ -700,15 +757,15 @@ Please share availability and fare details.`;
             {popularRoutes.map(
               (route, index) => (
                 <FadeInWhenVisible
-                  key={route}
+                  key={route.label}
                   delay={index * 0.05}
                 >
                   <Link
-                    to="/destinations"
+                    to={route.to}
                     className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-sky-50 hover:border-sky-300 transition"
                   >
                     <span className="font-semibold text-gray-800">
-                      {route}
+                      {route.label}
                     </span>
 
                     <ArrowRight className="w-5 h-5 text-sky-600" />

@@ -260,6 +260,10 @@ const allDestinations = [
   ...additionalDestinations,
 ];
 
+const destinationSearchAliases: Record<string, string[]> = {
+  Banaras: ["Varanasi", "Kashi"],
+};
+
 /* =========================================================
    ANIMATION COMPONENT
    ========================================================= */
@@ -322,6 +326,9 @@ export function DestinationsPage() {
 
       const matchesSearch =
         destination.name.toLowerCase().includes(search) ||
+        (destinationSearchAliases[destination.name] ?? []).some((alias) =>
+          alias.toLowerCase().includes(search),
+        ) ||
         destination.location.toLowerCase().includes(search) ||
         destination.country.toLowerCase().includes(search) ||
         destination.description.toLowerCase().includes(search);
@@ -423,6 +430,7 @@ export function DestinationsPage() {
 
             <div className="hidden gap-4 md:flex">
               <select
+                aria-label="Filter destinations by country"
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
                 className="rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
@@ -435,6 +443,7 @@ export function DestinationsPage() {
               </select>
 
               <select
+                aria-label="Filter destinations by budget"
                 value={selectedBudget}
                 onChange={(e) => setSelectedBudget(e.target.value)}
                 className="rounded-full border border-gray-300 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
@@ -457,6 +466,7 @@ export function DestinationsPage() {
               className="mt-4 flex flex-col gap-3 md:hidden"
             >
               <select
+                aria-label="Filter destinations by country"
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
                 className="rounded-full border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
@@ -469,6 +479,7 @@ export function DestinationsPage() {
               </select>
 
               <select
+                aria-label="Filter destinations by budget"
                 value={selectedBudget}
                 onChange={(e) => setSelectedBudget(e.target.value)}
                 className="rounded-full border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-600"
@@ -519,7 +530,9 @@ export function DestinationsPage() {
               <span className="font-semibold text-gray-900">
                 {filteredDestinations.length}
               </span>{" "}
-              cab destinations
+              {filteredDestinations.length === 1
+                ? "cab destination"
+                : "cab destinations"}
             </p>
 
             <p className="text-sm text-gray-500">

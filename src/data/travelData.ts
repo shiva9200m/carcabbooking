@@ -11,7 +11,7 @@ export const destinations = [
       "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=687&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Kathmandu",
     budget: "luxury",
-    description: "Paradise on Earth with crystal clear waters",
+    description: "Explore Kathmandu's historic sites, temples and city attractions.",
   },
    {
     id: 1,
@@ -23,7 +23,7 @@ export const destinations = [
       "https://i.pinimg.com/1200x/81/12/cb/8112cb67fa462147eb5c582663f55731.jpg",
     country: "pokhara",
     budget: "luxury",
-    description: "Paradise on Earth with crystal clear waters",
+    description: "Visit Pokhara for its lakes, mountain views and city attractions.",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ export const destinations = [
       "https://plus.unsplash.com/premium_photo-1697729634472-bb82561ef296?q=80&w=687&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Banaras",
     budget: "luxury",
-    description: "Breathtaking mountain landscapes",
+    description: "Plan a trip to Varanasi for temple visits, ghats and local sightseeing.",
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const destinations = [
       "https://plus.unsplash.com/premium_photo-1697730334768-6e65fa8fded0?q=80&w=870&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Ayodhya",
     budget: "medium",
-    description: "The City of Love and Lights",
+    description: "Visit Ayodhya for pilgrimage, temple visits and sightseeing.",
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ export const destinations = [
       "https://i.pinimg.com/736x/ed/e9/a4/ede9a46da88886b9a98b13f076343e35.jpg",
     country: "Prem Mandir",
     budget: "medium",
-    description: "Modern meets traditional in Japan's capital",
+    description: "Visit Prem Mandir in Vrindavan as part of a pilgrimage or sightseeing trip.",
   },
   {
     id: 5,
@@ -71,7 +71,7 @@ export const destinations = [
       "https://images.unsplash.com/photo-1580741186862-c5d0bf2aff33?q=80&w=774&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Goa",
     budget: "medium",
-    description: "Iconic white-washed buildings and sunsets",
+    description: "Explore Goa's beaches, coastal scenery and local attractions.",
   },
   {
     id: 6,
@@ -83,7 +83,7 @@ export const destinations = [
       "https://images.unsplash.com/photo-1612438214708-f428a707dd4e?q=80&w=774&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Kedarnath",
     budget: "luxury",
-    description: "Luxury and innovation in the desert",
+    description: "Visit Kedarnath for pilgrimage and sightseeing in the Himalayas.",
   },
   {
     id: 7,
@@ -95,7 +95,7 @@ export const destinations = [
       "https://images.unsplash.com/photo-1691940175842-84a788886e7f?q=80&w=868&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Kushinagar",
     budget: "budget",
-    description: "Tropical paradise with rich culture",
+    description: "Visit Kushinagar for Buddhist pilgrimage and local sightseeing.",
   },
   {
     id: 8,
@@ -107,7 +107,7 @@ export const destinations = [
       "https://images.unsplash.com/photo-1712388430474-ace0c16051e2?q=80&w=774&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     country: "Manali",
     budget: "luxury",
-    description: "Land of fire, ice, and northern lights",
+    description: "Explore Manali, a hill town known for mountain scenery and local attractions.",
   },
   
 ];
@@ -204,15 +204,6 @@ export const testimonials = [
     image:
       "https://images.unsplash.com/photo-1744535814650-adcc647fd2b7?q=80&w=687&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-  {
-    id: 3,
-    name: "Rima Singh",
-    location: "Gorakhpur, India",
-    rating: 5,
-    text: "Unforgettable memories in. The itinerary was perfect, and the accommodations were stunning. Will definitely book again!",
-    image:
-      "https://images.unsplash.com/photo-1663560453720-42a09eb92b8e?q=80&w=687&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
 ];
 
 export const features = [
@@ -224,7 +215,7 @@ export const features = [
   {
     icon: "Shield",
     title: "Safe Cab Booking",
-    description: "Clean cars, verified drivers and reliable pickup for every trip",
+    description: "Clean cars, professional drivers and reliable pickup for every trip",
   },
   {
     icon: "Clock",

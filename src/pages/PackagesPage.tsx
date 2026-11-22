@@ -133,7 +133,7 @@ export function PackagesPage() {
             </p>
 
             <p className="mt-4 leading-relaxed text-gray-600">
-              Every package includes a verified driver, pickup
+              Every package includes a professional driver, pickup
               from your chosen location, route assistance and
               support for custom schedules. Book the right car
               and route from Gorakhpur today.

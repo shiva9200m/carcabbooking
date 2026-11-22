@@ -2,6 +2,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, Globe } from "lucide-react";
 import { ImageWithFallback } from "@/components/common/ImageWithFallback";
+import {
+  landingPages,
+  landingPagePath,
+} from "@/data/landingPages";
 
 const guideCards = [
   {
@@ -197,6 +201,31 @@ export function GuidesPage() {
               <li>Ask for local route suggestions if you want sightseeing or faster travel.</li>
               <li>Use our 24/7 support line for any changes or immediate assistance.</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Gorakhpur Taxi Services and Routes
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              Go straight to the service or route you need and book by call or
+              WhatsApp.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {landingPages.map((page) => (
+                <Link
+                  key={page.slug}
+                  to={landingPagePath(page.slug)}
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-5 font-semibold text-sky-700 transition hover:border-sky-300 hover:bg-sky-50"
+                >
+                  {page.linkLabel}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

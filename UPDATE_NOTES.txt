@@ -1,0 +1,40 @@
+CAR CAB BOOKING: COMPLETE UPDATED PROJECT (SEO + AEO + GEO + WhatsApp form fix)
+
+HOW TO USE
+1. Keep a backup of your old project folder.
+2. Copy everything from this folder into your project (Replace files). Keep your own node_modules.
+   (Fresh PC: run  npm install  first.)
+3. npm run check      -> must end with: [prerender] wrote 17 static HTML pages
+4. npm run dev        -> test in the browser
+5. npm run preview    -> test the production build (localhost:4173)
+6. Push to a separate branch first, test the Cloudflare preview URL, then merge to main.
+
+AFTER DEPLOY
+- Search Console: submit sitemap.xml again, "Request indexing" for the 12 new URLs
+- Bing Webmaster Tools: submit sitemap.xml
+
+ASK THE CLIENT
+- Which phone number is the main one? (Header + Packages use 7084183421, everything else 8810990496)
+- One business name everywhere? (Header says "Gorakhpur Car & Tour Service", titles/schema say "Car Cab Booking")
+- Confirm claims: 24/7, fare confirmed before the trip, ratings/review counts on Packages
+- After changing page content, update the "updated" date in src/data/landingPages.ts
+
+WHAT IS NEW OR CHANGED
+index.html                 SEO tags, schema (12 services), canonical handled per page
+package.json               build = vite build && node scripts/prerender.mjs
+scripts/prerender.mjs      static HTML for 17 pages (crawlers without JavaScript)
+public/_redirects          direct URLs / refresh work on Cloudflare Pages
+public/assets/ccb.png      favicon, share image, schema logo
+public/llms.txt            summary for AI tools
+public/sitemap.xml         17 URLs
+public/robots.txt          sitemap link
+src/data/landingPages.ts   12 landing pages: quick answers, FAQs, key facts
+src/data/pageSeo.ts        SEO + text of the 5 main pages, home FAQs
+src/seo/schema.ts          structured data builders
+src/seo/Seo.tsx            per-page title, description, canonical, schema
+src/pages/ServicePage.tsx  landing page template
+src/pages/HomePage.tsx     links, Hindi line, FAQs from pageSeo.ts, WhatsApp form fix
+src/pages/ContactPage.tsx  WhatsApp form fix
+src/pages/GuidesPage.tsx   links to landing pages
+src/components/layout/Footer.tsx  links to landing pages
+src/app/App.tsx            routes for the 12 landing pages

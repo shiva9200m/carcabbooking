@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en-IN">
   <head>
@@ -12,15 +10,15 @@
 
     <!-- =========================================================
          PRIMARY SEO
+         (src/seo/Seo.tsx updates these per page after the app loads;
+          keep the home-page values here identical to Seo.tsx "/")
     ========================================================== -->
 
-    <title>
-      Cab Booking in Gorakhpur | Taxi Service 24/7 | Car Cab Booking
-    </title>
+    <title>Cab Booking &amp; Taxi Service in Gorakhpur | Car Cab Booking</title>
 
     <meta
       name="description"
-      content="Book reliable cab and taxi service in Gorakhpur for local travel, airport and railway pickup, outstation trips, Ayodhya, Varanasi, Kushinagar, Nepal, Pokhara and more. Call or WhatsApp Car Cab Booking 24/7."
+      content="Cab booking and taxi service in Gorakhpur: local rides, airport and railway station pickup, car rental and outstation trips to Ayodhya, Varanasi, Lucknow and Nepal."
     />
 
     <meta name="author" content="Car Cab Booking" />
@@ -56,12 +54,11 @@
 
     <!-- =========================================================
          CANONICAL
+         Intentionally NOT set here. This file is served for every URL
+         (SPA), so a fixed canonical would point all new landing pages
+         to the home page. src/seo/Seo.tsx adds the correct canonical
+         for each page.
     ========================================================== -->
-
-    <link
-      rel="canonical"
-      href="https://www.carcabbooking.com/"
-    />
 
     <!-- =========================================================
          ICONS
@@ -84,12 +81,12 @@
 
     <meta
       property="og:title"
-      content="Cab Booking in Gorakhpur | Taxi Service 24/7 | Car Cab Booking"
+      content="Cab Booking & Taxi Service in Gorakhpur | Car Cab Booking"
     />
 
     <meta
       property="og:description"
-      content="Book local and outstation cab service in Gorakhpur. Airport pickup, railway station pickup, Ayodhya, Varanasi, Kushinagar, Nepal, Pokhara and other taxi routes available 24/7."
+      content="Book local and outstation cab service in Gorakhpur. Airport pickup, railway station pickup, car rental, Ayodhya, Varanasi, Lucknow, Nepal and Pokhara taxi routes."
     />
 
     <meta
@@ -133,12 +130,12 @@
 
     <meta
       name="twitter:title"
-      content="Cab Booking in Gorakhpur | Taxi Service 24/7"
+      content="Cab Booking & Taxi Service in Gorakhpur"
     />
 
     <meta
       name="twitter:description"
-      content="Book reliable local and outstation taxi service in Gorakhpur for airport pickup, railway pickup, Ayodhya, Varanasi, Kushinagar, Nepal and more."
+      content="Local and outstation taxi service in Gorakhpur: airport pickup, railway pickup, car rental, Ayodhya, Varanasi, Lucknow, Nepal and more."
     />
 
     <meta
@@ -179,7 +176,17 @@
 
         "image": "https://www.carcabbooking.com/assets/ccb.png",
 
-        "description": "Car Cab Booking provides 24/7 cab booking, taxi service, local travel, airport and railway station pickup, car rental and outstation cab service in Gorakhpur, Uttar Pradesh.",
+        "description": "Car Cab Booking provides cab booking, taxi service, local travel, airport and railway station pickup, car rental with driver and outstation cab service in Gorakhpur, Uttar Pradesh.",
+
+        "serviceType": [
+          "Taxi service in Gorakhpur",
+          "Cab booking",
+          "Outstation taxi",
+          "Airport taxi",
+          "Railway station taxi",
+          "Car rental with driver",
+          "Tourist car booking"
+        ],
 
         "telephone": "+918810990496",
 
@@ -226,6 +233,10 @@
             "name": "Varanasi"
           },
           {
+            "@type": "Place",
+            "name": "Lucknow"
+          },
+          {
             "@type": "Country",
             "name": "Nepal"
           }
@@ -267,71 +278,96 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Cab Booking in Gorakhpur"
+                "name": "Taxi Service in Gorakhpur",
+                "url": "https://www.carcabbooking.com/taxi-service-in-gorakhpur"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Local Taxi Service in Gorakhpur"
+                "name": "Online Cab Booking in Gorakhpur",
+                "url": "https://www.carcabbooking.com/online-cab-booking-gorakhpur"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Outstation Cab from Gorakhpur"
+                "name": "Outstation Taxi from Gorakhpur",
+                "url": "https://www.carcabbooking.com/outstation-taxi-service-gorakhpur"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur Airport Taxi"
+                "name": "Gorakhpur Airport Taxi",
+                "url": "https://www.carcabbooking.com/gorakhpur-airport-taxi"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur Railway Station Taxi"
+                "name": "Gorakhpur Railway Station Taxi",
+                "url": "https://www.carcabbooking.com/gorakhpur-railway-station-taxi"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur to Ayodhya Cab"
+                "name": "Car Rental in Gorakhpur with Driver",
+                "url": "https://www.carcabbooking.com/car-rental-in-gorakhpur"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur to Varanasi Cab"
+                "name": "Gorakhpur to Ayodhya Cab",
+                "url": "https://www.carcabbooking.com/gorakhpur-to-ayodhya-taxi"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur to Kushinagar Cab"
+                "name": "Gorakhpur to Varanasi Cab",
+                "url": "https://www.carcabbooking.com/gorakhpur-to-varanasi-taxi"
               }
             },
-
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Gorakhpur to Nepal Cab"
+                "name": "Gorakhpur to Lucknow Cab",
+                "url": "https://www.carcabbooking.com/gorakhpur-to-lucknow-taxi"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Gorakhpur to Nepal Cab",
+                "url": "https://www.carcabbooking.com/gorakhpur-to-nepal-taxi"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Gorakhpur to Pokhara Cab",
+                "url": "https://www.carcabbooking.com/gorakhpur-to-pokhara-taxi"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Tour and Travels Taxi Service",
+                "url": "https://www.carcabbooking.com/tour-and-travels-gorakhpur"
               }
             }
           ]
@@ -385,7 +421,7 @@
         </h1>
 
         <p>
-          Car Cab Booking provides 24/7 local taxi,
+          Car Cab Booking provides cab booking, local taxi,
           airport pickup, railway station pickup,
           car rental and outstation cab service
           in Gorakhpur, Uttar Pradesh.
@@ -400,6 +436,23 @@
           to Ayodhya, Varanasi, Kushinagar, Nepal,
           Pokhara, Lucknow and other destinations.
         </p>
+
+        <nav aria-label="Taxi services in Gorakhpur">
+          <ul>
+            <li><a href="/taxi-service-in-gorakhpur">Taxi Service in Gorakhpur</a></li>
+            <li><a href="/online-cab-booking-gorakhpur">Online Cab Booking in Gorakhpur</a></li>
+            <li><a href="/outstation-taxi-service-gorakhpur">Outstation Taxi from Gorakhpur</a></li>
+            <li><a href="/car-rental-in-gorakhpur">Car Rental in Gorakhpur</a></li>
+            <li><a href="/gorakhpur-airport-taxi">Gorakhpur Airport Taxi</a></li>
+            <li><a href="/gorakhpur-railway-station-taxi">Gorakhpur Railway Station Taxi</a></li>
+            <li><a href="/gorakhpur-to-ayodhya-taxi">Gorakhpur to Ayodhya Taxi</a></li>
+            <li><a href="/gorakhpur-to-varanasi-taxi">Gorakhpur to Varanasi Taxi</a></li>
+            <li><a href="/gorakhpur-to-lucknow-taxi">Gorakhpur to Lucknow Taxi</a></li>
+            <li><a href="/gorakhpur-to-nepal-taxi">Gorakhpur to Nepal Taxi</a></li>
+            <li><a href="/gorakhpur-to-pokhara-taxi">Gorakhpur to Pokhara Taxi</a></li>
+            <li><a href="/tour-and-travels-gorakhpur">Tour and Travels Taxi Service</a></li>
+          </ul>
+        </nav>
 
         <p>
           Call +91 8810990496 for cab booking
@@ -422,7 +475,7 @@
     ========================================================== -->
 
     <a
-      href="https://wa.me/918810990496?text=Hi%20Car%20Cab%20Booking%2C%0AI%20want%20to%20book%20a%20cab.%0APickup%20Location%3A%0ADestination%3A%0ATravel%20Date%3A%0APickup%20Time%3A%0APassengers%3A%0APreferred%20Car%3A%0ATrip%20Type%3A%20One%20Way%20%2F%20Round%20Trip%0APlease%20share%20availability%20and%20fare%20details."
+      href="https://wa.me/918810990496?text=Hi%20Car%20Cab%20Booking%2C%20mujhe%20Gorakhpur%20se%20cab%20book%20karni%20hai."
       target="_blank"
       class="floating-whatsapp-btn"
       rel="noopener noreferrer"
