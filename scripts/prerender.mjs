@@ -95,9 +95,14 @@ function jsonLdTag(id, data) {
 const li = (items) =>
   `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 
+// Visually hidden (but still in the HTML) so crawlers, AI bots and screen
+// readers can read it, while visitors never see an unstyled text page
+// flash before React loads. React replaces it with the identical,
+// styled content as soon as the app starts.
 const shellStyle =
-  "max-width:960px;margin:0 auto;padding:96px 16px 48px;" +
-  "font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;color:#111827";
+  "position:absolute;width:1px;height:1px;margin:-1px;padding:0;" +
+  "overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);" +
+  "white-space:nowrap;border:0";
 
 const serviceLinks = landingPages.map(
   (page) =>

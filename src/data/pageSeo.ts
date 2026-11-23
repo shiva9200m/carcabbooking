@@ -77,6 +77,12 @@ export const homeFaqs: Faq[] = [
   },
   {
     question:
+      "What is Car Cab Booking (CarCab) in Gorakhpur?",
+    answer:
+      "Car Cab Booking, also searched as CarCab, is a cab booking and taxi service in Gorakhpur for local rides, airport and railway station transfers, car rental with driver and outstation trips. Call +91 8810990496 or WhatsApp to book. गोरखपुर में कैब बुकिंग (केब बुकिंग) के लिए हमें कॉल करें।",
+  },
+  {
+    question:
       "Do you provide one-way and round-trip cab booking?",
     answer:
       "Yes. You can contact us for one-way cab and round-trip booking based on your route and travel requirements.",

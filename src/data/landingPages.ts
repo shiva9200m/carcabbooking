@@ -85,6 +85,13 @@ export const landingPages: LandingPage[] = [
           "Local taxi booking is available for Mohaddipur, Golghar, Taramandal, Rapti Nagar, Medical College, Gorakhnath, Sahjanwa, Pipraich, Chauri Chaura and nearby areas.",
         ],
       },
+      {
+        heading: "Taxi Gorakhpur: Book a Taxi in Gorakhpur by Call or WhatsApp",
+        paragraphs: [
+          "If you are looking for taxi Gorakhpur or taxi service Gorakhpur, you can book with Car Cab Booking by call, WhatsApp or the booking form. A taxi in Gorakhpur can be booked for a single ride, a few hours or a full day. The Gorakhpur taxi service number is +91 8810990496 or +91 7084183421.",
+          "The same number works for city rides and for long trips, so you do not need a separate booking for outstation travel.",
+        ],
+      },
     ],
     hindi:
       "गोरखपुर में कैब बुकिंग और टैक्सी सेवा के लिए हमें कॉल या WhatsApp करें। लोकल टैक्सी, एयरपोर्ट पिकअप, रेलवे स्टेशन पिकअप और आउटस्टेशन कैब के लिए अपनी जानकारी भेजें, हम गाड़ी और किराया कन्फर्म करेंगे।",
@@ -114,8 +121,14 @@ export const landingPages: LandingPage[] = [
         answer:
           "Yes. One-way and round-trip cabs are available for Ayodhya, Varanasi, Lucknow, Nepal, Pokhara and other routes.",
       },
+      {
+        question: "Which is the best taxi service in Gorakhpur?",
+        answer:
+          "The best choice depends on what you need. Look for a service that confirms the car and fare before the trip, explains toll and parking charges, answers the phone at any hour and offers a car size that suits your group. Call or WhatsApp Car Cab Booking to check availability for your trip.",
+      },
     ],
     related: [
+      "cab-service-in-gorakhpur",
       "outstation-taxi-service-gorakhpur",
       "gorakhpur-airport-taxi",
       "gorakhpur-railway-station-taxi",
@@ -125,12 +138,111 @@ export const landingPages: LandingPage[] = [
     ],
   },
 
+
+  {
+    slug: "cab-service-in-gorakhpur",
+    linkLabel: "Cab Service in Gorakhpur",
+    title: "Cab Service in Gorakhpur | Local & Outstation Cabs 24/7",
+    description:
+      "Cab service in Gorakhpur for city rides, airport and station transfers and outstation trips. Sedan, SUV, Innova and Tempo Traveller. Call or WhatsApp.",
+    keywords:
+      "cab service in Gorakhpur, cab services in Gorakhpur, Gorakhpur cab service, cab service Gorakhpur, cab in Gorakhpur, Gorakhpur cab, cab near me, cab service near me, nearby cab service",
+    h1: "Cab Service in Gorakhpur",
+    quickAnswer:
+      "Car Cab Booking provides cab service in Gorakhpur for local rides, airport and railway station transfers, sightseeing and outstation trips. Choose a sedan, SUV, Innova or Tempo Traveller, then call +91 8810990496 or WhatsApp your pickup point, destination and date. The car and fare are confirmed before the trip.",
+    updated: "2026-11-22",
+    heroText:
+      "Cab in Gorakhpur for city rides, station and airport transfers, events and outstation trips.",
+    intro: [
+      "Car Cab Booking offers cab service in Gorakhpur for families, patients and attendants, office travellers, pilgrims and tourists. Book a cab for a single ride, a few hours or a full day, and confirm your trip by phone or WhatsApp.",
+      "Our cab services in Gorakhpur include local rides, Gorakhpur Airport and Railway Station pickup, sightseeing and one-way or round-trip outstation travel.",
+    ],
+    sections: [
+      {
+        heading: "Cab Services in Gorakhpur We Offer",
+        paragraphs: [
+          "Pick the cab service that matches your plan. You can combine them, for example an airport pickup followed by a full-day local cab.",
+        ],
+        bullets: [
+          "Local cab in Gorakhpur for city travel, hospital visits, shopping and family functions",
+          "Gorakhpur Airport and Railway Station cab for pickup and drop",
+          "Sightseeing cab for Gorakhnath Temple, Ramgarh Tal, Nauka Vihar and Gita Press",
+          "Outstation cab from Gorakhpur to Ayodhya, Varanasi, Lucknow, Nepal and Pokhara",
+          "Cab with driver for events, weddings and group travel",
+        ],
+      },
+      {
+        heading: "Cab Types Available in Gorakhpur",
+        paragraphs: [
+          "Tell us how many passengers and how much luggage you have and we will suggest a suitable cab.",
+        ],
+        bullets: [
+          "Maruti Suzuki Dzire (5 seater)",
+          "Maruti Suzuki Ertiga, Kia Carens and Renault Triber (7 seater)",
+          "Mahindra Scorpio (6 seater)",
+          "Toyota Innova (7 seater)",
+          "Luxury Tempo Traveller (16 seater)",
+        ],
+      },
+      {
+        heading: "Gorakhpur Cab Booking: How It Works",
+        paragraphs: [
+          "For cab booking in Gorakhpur, call or WhatsApp us with your pickup point, destination, date, time and number of passengers. We confirm the car and fare with you before the trip, so you know what to expect.",
+          "Booking support is available 24/7, including early-morning and late-night cab requests.",
+        ],
+      },
+      {
+        heading: "Cab Near Me in Gorakhpur",
+        paragraphs: [
+          "If you are searching for a cab near me or a cab service near me in Gorakhpur, send your pickup location on WhatsApp. We confirm the cab and pickup time with you. Nearby cab service is available for areas such as Mohaddipur, Golghar, Taramandal, Rapti Nagar, Medical College and Gorakhnath.",
+        ],
+      },
+    ],
+    hindi:
+      "गोरखपुर में कैब सर्विस और केब बुकिंग के लिए हमें कॉल या WhatsApp करें। लोकल कैब, एयरपोर्ट और रेलवे स्टेशन पिकअप तथा आउटस्टेशन ट्रिप के लिए अपनी जानकारी भेजें, हम गाड़ी और किराया कन्फर्म करेंगे।",
+    faqs: [
+      {
+        question: "Is cab service available in Gorakhpur 24/7?",
+        answer:
+          "Booking support is available 24/7. Contact us with your pickup time and we will confirm cab availability for day and night travel.",
+      },
+      {
+        question: "How can I book a cab in Gorakhpur?",
+        answer:
+          "Call +91 8810990496 or send a WhatsApp message with your pickup point, destination, date and passenger count. You can also use the booking form on this page.",
+      },
+      {
+        question: "What is the difference between a taxi and a cab in Gorakhpur?",
+        answer:
+          "In everyday use both mean a car with a driver booked for a trip. Car Cab Booking provides both under one service, for local rides and outstation travel.",
+      },
+      {
+        question: "Do you provide a cab near me in Gorakhpur?",
+        answer:
+          "Yes. Send your pickup location on WhatsApp or call us, and we will confirm the cab and pickup time.",
+      },
+      {
+        question: "Which cabs are available in Gorakhpur?",
+        answer:
+          "Options include Dzire, Ertiga, Carens, Triber, Scorpio, Innova and Tempo Traveller. Tell us your group size and luggage and we will suggest a suitable cab.",
+      },
+    ],
+    related: [
+      "taxi-service-in-gorakhpur",
+      "online-cab-booking-gorakhpur",
+      "outstation-taxi-service-gorakhpur",
+      "car-rental-in-gorakhpur",
+      "gorakhpur-airport-taxi",
+      "gorakhpur-railway-station-taxi",
+    ],
+  },
+
   {
     slug: "outstation-taxi-service-gorakhpur",
     linkLabel: "Outstation Taxi from Gorakhpur",
-    title: "Outstation Taxi from Gorakhpur | One-Way & Round Trip Cab",
+    title: "Outstation Taxi Service in Gorakhpur | One-Way & Round Trip",
     description:
-      "Book outstation taxi from Gorakhpur for one-way or round-trip travel to Ayodhya, Varanasi, Lucknow, Nepal, Pokhara and more. Call or WhatsApp to confirm.",
+      "Outstation taxi service in Gorakhpur for one-way and round-trip cab booking to Ayodhya, Varanasi, Lucknow, Nepal and Pokhara. Call or WhatsApp to book.",
     keywords:
       "outstation taxi service in Gorakhpur, outstation taxi from Gorakhpur, outstation cab booking, cab booking outstation, cabs for outstation, outstation cabs, outstation cab service from Gorakhpur",
     h1: "Outstation Taxi Service from Gorakhpur",
@@ -171,6 +283,13 @@ export const landingPages: LandingPage[] = [
           "Sedan cars suit small families, while Ertiga, Carens, Triber, Scorpio and Innova suit larger groups with luggage. A Tempo Traveller is available for bigger groups. Mention your passengers and luggage and we will suggest a suitable car.",
         ],
       },
+      {
+        heading: "Outstation Cab Booking and Car Booking for Outstation",
+        paragraphs: [
+          "Looking for an outstation taxi service in Gorakhpur? You can do outstation cab booking by call or WhatsApp. Tell us your route, travel dates and number of passengers, and we will confirm the car and fare.",
+          "Car booking for outstation is available for one-way drops and round trips. Cabs for outstation travel can be booked for a day or for several days, with a driver.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -187,6 +306,11 @@ export const landingPages: LandingPage[] = [
         question: "Are toll and parking charges included?",
         answer:
           "This depends on the route and booking. Ask us when you enquire and we will explain which charges apply before you confirm.",
+      },
+      {
+        question: "How do I book an outstation taxi from Gorakhpur?",
+        answer:
+          "Call or WhatsApp Car Cab Booking with your destination, travel date, pickup point and number of passengers. We confirm the car and fare before the trip.",
       },
     ],
     related: [
@@ -259,6 +383,11 @@ export const landingPages: LandingPage[] = [
         answer:
           "Yes. Add your return date in the booking form or tell us on the call so the plan covers the full journey.",
       },
+      {
+        question: "Can I get car hire in Gorakhpur for Nepal?",
+        answer:
+          "Yes. Car Cab Booking offers car hire with a driver from Gorakhpur for Nepal trips via Sonauli. Share your Nepal destination, travel dates and group size and we will confirm the car and fare. Ask us about what to carry for border travel before you start.",
+      },
     ],
     related: [
       "gorakhpur-to-pokhara-taxi",
@@ -320,6 +449,11 @@ export const landingPages: LandingPage[] = [
         question: "Which car should I choose for Pokhara?",
         answer:
           "For couples and small families a sedan or Triber is usually enough. For bigger groups or more luggage, choose an Ertiga, Carens, Scorpio, Innova or Tempo Traveller.",
+      },
+      {
+        question: "What is the Gorakhpur to Pokhara taxi fare?",
+        answer:
+          "The fare depends on the car, whether the trip is one-way or round trip, your dates and route charges such as toll. Call or WhatsApp with your dates and group size and we will confirm the Gorakhpur to Pokhara taxi fare before you book.",
       },
     ],
     related: [
@@ -631,6 +765,11 @@ export const landingPages: LandingPage[] = [
         answer:
           "Call or WhatsApp us with your trip details and we will share the fare before you confirm.",
       },
+      {
+        question: "Do you have a Gorakhpur to Lucknow cab service?",
+        answer:
+          "Yes. You can book a Gorakhpur to Lucknow cab for a one-way drop or a round trip. Share your date, pickup point and passenger count and we will confirm the car and fare.",
+      },
     ],
     related: [
       "gorakhpur-to-ayodhya-taxi",
@@ -677,6 +816,13 @@ export const landingPages: LandingPage[] = [
           "You can rent for a few hours in Gorakhpur, a full day, or a multi-day outstation trip. Tell us which one you need and ask how the charges work for your plan, including toll, parking and driver allowance.",
         ],
       },
+      {
+        heading: "Rent a Car in Gorakhpur with a Driver",
+        paragraphs: [
+          "If you want to rent a car in Gorakhpur, Car Cab Booking provides cars with a driver for a few hours, a full day or several days. Our Gorakhpur car rental service covers city travel, airport and railway station transfers, events and outstation journeys.",
+          "As a car travel agency in Gorakhpur for local and long-distance trips, we help you choose a sedan, SUV, Innova or Tempo Traveller to match your group, then confirm the fare before you travel.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -693,6 +839,11 @@ export const landingPages: LandingPage[] = [
         question: "Which car should I rent for a big group?",
         answer:
           "For up to seven passengers, an Ertiga, Carens, Triber or Innova works well. For larger groups, ask about the Tempo Traveller.",
+      },
+      {
+        question: "Is there a Gorakhpur car rental service for several days?",
+        answer:
+          "Yes. Car Cab Booking offers car rental with a driver for a day or several days. Tell us your dates, route and number of passengers and we will confirm the car and fare.",
       },
     ],
     related: [
@@ -752,6 +903,13 @@ export const landingPages: LandingPage[] = [
           "Booking support is available day and night. For early-morning or late-night trips, contact us in advance so we can confirm vehicle availability.",
         ],
       },
+      {
+        heading: "Car Booking in Gorakhpur for Local, Travel and Outstation Trips",
+        paragraphs: [
+          "You can use this page for car booking in Gorakhpur as well as cab booking. Gorakhpur car booking is available for local rides, car booking for travel to nearby cities and car booking for outstation trips.",
+          "Choose a 4 wheeler booking that fits your group, such as a sedan for a small family or an Ertiga, Carens, Scorpio, Innova or Tempo Traveller for larger groups. Share your pickup point, destination and date by call or WhatsApp and we will confirm the car and fare.",
+        ],
+      },
     ],
     hindi:
       "गोरखपुर में गाड़ी बुकिंग और कैब बुकिंग के लिए कॉल या WhatsApp करें। अपनी लोकेशन, तारीख, समय और यात्रियों की संख्या बताएं, हम गाड़ी और किराया कन्फर्म करेंगे।",
@@ -775,6 +933,11 @@ export const landingPages: LandingPage[] = [
         question: "Do you provide car booking for outstation trips?",
         answer:
           "Yes. One-way and round-trip cars are available for Ayodhya, Varanasi, Lucknow, Nepal, Pokhara and other routes.",
+      },
+      {
+        question: "How do I do car booking in Gorakhpur for outstation travel?",
+        answer:
+          "Send your route, travel date and number of passengers on WhatsApp or call us. We confirm the car and fare, and you can choose a one-way drop or a round trip.",
       },
     ],
     related: [
